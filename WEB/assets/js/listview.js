@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var table = $('#listview').DataTable({
-        "ajax": '../../data.json', 
+        "ajax": '../data.json', 
         "order": [[0, 'asc']], 
         "language": {
         "decimal" : "",
