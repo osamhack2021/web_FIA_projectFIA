@@ -1,6 +1,11 @@
 $(document).ready(function () {
     var table = $('#listview').DataTable({
-        "ajax": '../data.json', 
+        "ajax": {
+            url: '../data.json', 
+            error: function(xhr) {
+                console.log(xhr);
+            }
+        }, 
         "order": [[0, 'asc']], 
         "language": {
         "decimal" : "",
