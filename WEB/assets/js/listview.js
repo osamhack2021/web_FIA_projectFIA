@@ -1,7 +1,8 @@
 $(document).ready(function () {
     var table = $('#listview').DataTable({
         "ajax": {
-            url: '../data.json', 
+            url: '/WEB/assets/data.json', 
+            type : 'GET', 
             error: function(xhr) {
                 console.log(xhr);
             }
@@ -49,13 +50,12 @@ $(document).ready(function () {
         }, {
             targets: -1,
             data: null,
-            defaultContent: "<button style='color: blue;'>자세히 보기</button>"
+            defaultContent: "<button style='color: green;'>자세히 보기</button>"
         }],
     });
 
     $('#listview tbody').on('click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        // alert(`${data[3]}번째 글입니다.`);
-        console.log(data);
+        alert(`${data[3]}번째 글입니다.`);
     });
 });
