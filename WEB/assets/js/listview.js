@@ -3,8 +3,8 @@ $(document).ready(function () {
         "ajax" : {
             url : '/WEB/assets/data.json', 
             type : 'GET', 
-            error : function(xhr) {
-                console.log(xhr);
+            error : function(xhr, status, error) {
+                // console.log(xhr);
             }
         }, 
         "order" : [[0, 'asc']], 
@@ -40,6 +40,9 @@ $(document).ready(function () {
             className : 'dt-left'
         }, {
             targets : 2, 
+            className : 'dt-center'
+        }, {
+            targets : 3, 
             className : 'dt-center', 
             render : function(data, type) {
                 if (type == 'display') {
@@ -58,12 +61,34 @@ $(document).ready(function () {
             targets: -1,
             className: 'dt-center',
             data: null,
-            defaultContent: "<button style='color: green;'>자세히 보기</button>"
+            defaultContent: "<button>자세히 보기</button>"
         }],
+        
+        initComplete: function () {
+            this.api().column().eq(0).each( function () {
+                var column = this.column(2);
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+        }
+        
     });
 
     $('#listview tbody').on('click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        console.log(`${data[3]}번째 글입니다.`);
+        console.log(`${data[4]}번째 글입니다.`);
     });
 });
