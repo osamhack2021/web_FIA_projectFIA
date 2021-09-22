@@ -45,6 +45,8 @@
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
+    $('#start').get(0).click();
+
     if (window.location.hash) {
       var initial_nav = window.location.hash;
       if ($(initial_nav).length) {
