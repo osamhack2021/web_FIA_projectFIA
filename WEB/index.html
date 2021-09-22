@@ -28,6 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/modal.css" rel="stylesheet">
+  <link href="assets/css/listview.css" rel="stylesheet">
 
 </head>
 
@@ -104,6 +105,7 @@
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#listviewLost">찾아주세요!</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
@@ -140,7 +142,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Welcome to <span class="project-name">FIA</span></h1>
+          <h1>Welcome to <span class="project-name">FIA!</span></h1>
           <h2>아르미 분실물 센터 · FIA(Find it, Army!)에서 <br>당신의 소중한 물건을 찾아보세요!</h2>
           <div class="d-flex">
             <a href="#about" class="btn-get-started scrollto">로그인</a>
@@ -248,26 +250,27 @@
       </div>
     </section><!-- End Counts Section -->
 
-    <!--Datatable Demo-->
-
-    <section id="dashboard">
+    <!-- ======= 찾아주세요! 게시판 ======= -->
+    <section id="listviewLost">
       <div class="container">
         <div class="section-title">
-            <span>listview</span>
-            <h2>listview</h2>
+            <span>찾아주세요!</span>
+            <h2>찾아주세요!</h2>
+            <p>소중한 물건을 잃어버렸습니다. 습득하신다면 해당 게시물의 댓글 기능을 이용해 찾아주세요!</p>
+            <!--<p>누군가의 물건을 습득했다면, 애타게 찾고 있을 주인을 위해 게시판에 글을 남겨 주세요!</p>-->
         </div>
-          <table id="listview" class="compact">
+          <table id="dataTableLost" class="row-border">
               <thead>
                   <tr>
                       <th>습득 시각</th>
                       <th>제목</th>
                       <th>물품</th>
                       <th>상태</th>
-                      <th></th>
+                      <th>비고</th>
                   </tr>
               </thead>
-              
-              <tbody>
+
+
 
             </table>
       </div>
