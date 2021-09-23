@@ -45,8 +45,7 @@
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
-    $('#start').get(0).click();
-
+    
     if (window.location.hash) {
       var initial_nav = window.location.hash;
       if ($(initial_nav).length) {
@@ -199,12 +198,17 @@
   });
 
 })(jQuery);
-  
-function showLoginModal() {
-  $('#loginModal').modal('show');
+
+function fnLORModal(type) {
+  if (type === 'login') {
+    $('#loginModal').modal('show');
+  } else if (type === 'register') {
+    $('#loginModal').modal('hide'); 
+    $('#registerModal').modal('show'); 
+  }
 }
 
-function showRegisterModal() {
-  $('#loginModal').modal('hide'); 
-  $('#registerModal').modal('show'); 
+function fnWrite(writeType) {
+  sessionStorage.setItem('writeType',writeType);
+  window.open('/WEB/write.html');
 }
