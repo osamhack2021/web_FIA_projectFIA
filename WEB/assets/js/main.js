@@ -207,8 +207,3 @@ function fnLORModal(type) {
     $('#registerModal').modal('show'); 
   }
 }
-
-function fnWrite(writeType) {
-  sessionStorage.setItem('writeType',writeType);
-  window.open('/WEB/write.html');
-}

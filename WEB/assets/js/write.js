@@ -1,13 +1,15 @@
 $(document).ready(function () {
-    let writeType = sessionStorage.getItem('writeype');
-
-    if (writeType === null) {
-        alert('잘못된 경로로 접근하셨습니다.');
-    } else if (writeType === 'lost') {
-
-    } else if (writeType === 'found') {
-
+    
+    let writeType = getParameterByName('writeType');
+    if (writeType === null || !(writeType === 'lost' || writeType === 'found')) {
+        alert('잘못된 경로로 접근하였습니다.');
+        location.href = '/WEB/index.html';
     }
-
-    sessionStorage.clear();
 });
+
+function getParameterByName(name) { 
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), 
+    results = regex.exec(location.search); 
+    return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, " ")); 
+}
