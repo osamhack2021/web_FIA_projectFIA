@@ -26,18 +26,14 @@ const LANGUAGE_OPTION = {
 $(document).ready(function () {
     initDataTableLost();
     initDataTableFound();
-
-    $('#dataTableLost tbody').on('click', 'button', function () {
-        var data = table.row( $(this).parents('tr')).data();
-        
-        // window.open(`https://${data[4]}`);
-    });
 });
 
 function initDataTableLost() {
     var table = $('#dataTableLost').DataTable({
         "ajax" : {
             url : '/WEB/assets/data.json', 
+            // url : 'https://osamhack2021-web-cloud-fia-projectfia-69vqjw6x5fxvv4-8000.githubpreview.dev/WEB/assets/data.json', 
+            // ajax web url test
             type : 'GET', 
             error : function(xhr, status, error) {
                 // console.log(xhr);
@@ -104,6 +100,11 @@ function initDataTableLost() {
             });
         }
         
+    });
+
+    $('#dataTableLost tbody').on('click', 'button', function () {
+        var data = table.row( $(this).parents('tr')).data();
+        console.log(data[4]);
     });
 }
 
@@ -177,5 +178,10 @@ function initDataTableFound() {
             });
         }
         
+    });
+
+    $('#dataTableFound tbody').on('click', 'button', function () {
+        var data = table.row( $(this).parents('tr')).data();
+        console.log(data[4]);
     });
 }

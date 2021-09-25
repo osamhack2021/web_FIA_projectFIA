@@ -5,6 +5,8 @@ $(document).ready(function () {
         alert('잘못된 경로로 접근하였습니다.');
         location.href = '/WEB/index.html';
     }
+
+    // $("#writeType").text(writeType === 'lost' ? '찾아주세요!' : '찾아가세요!');
 });
 
 function getParameterByName(name) { 

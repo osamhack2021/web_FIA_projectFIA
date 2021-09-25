@@ -57,10 +57,72 @@
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
+      
+      <div class="container w-50">
+        <form class="validation-form" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="title">제목</label>
+              <input type="text" class="form-control" id="title" placeholder="" value="" required>
+              <div class="invalid-feedback"> 제목을 입력해주세요. </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="user">작성자</label>
+              <input type="text" class="form-control" id="user" placeholder="" value="" required>
+            </div>
+          </div>
+          <div class="mb-3"> 
+            <label for="place">습득장소(특이사항)</label> 
+            <textarea rows="5" class="form-control" id="place" placeholder="" value="" required></textarea>
+            <div class="invalid-feedback"> 습득장소(특이사항)을 입력해주세요. </div>
+          </div>
+          <div class="mb-3"> 
+            <label for="details">세부사항</label> 
+            <textarea rows="5" class="form-control" id="details" placeholder="" value="" required></textarea>
+            <div class="invalid-feedback"> 습득장소(특이사항)을 입력해주세요. </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3"> 
+              <label for="tag">태그</label> 
+              <select class="custom-select d-block w-100" id="tag">
+                <option value=""></option>
+                <option>검색</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3"> 
+              <label for="tag">글 유형</label> 
+              <select class="custom-select d-block w-100" id="type">
+                <option value=""></option>
+                <option>찾아주세요!</option>
+                <option>찾아가세요!</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3"> 
+              <label for="tag">태그</label> 
+              <select class="custom-select d-block w-100" id="tag">
+                <option value=""></option>
+                <option>검색</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3"> 
+              <label for="tag">글 유형</label> 
+              <select class="custom-select d-block w-100" id="type">
+                <option value=""></option>
+                <option>찾아주세요!</option>
+                <option>찾아가세요!</option>
+              </select>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="aggrement"
+              required> <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+          </div>
+          <div class="mb-4"></div> 
+          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+        </form>
+
       </div>
     </section>
 
