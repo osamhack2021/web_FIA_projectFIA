@@ -27,22 +27,21 @@ function getParameterByName(name) {
     return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, " ")); 
 }
 
+let fileList; 
+
 function uploadImgPreview() {
-    // @breif 업로드 파일 읽기
-    let fileList = document.getElementById( "upload" ).files;
-    // @breif 업로드 파일 읽기
+    fileList = document.getElementById( "upload" ).files;
+    
     function readAndPreview( fileList ) {
-        // @breif 이미지 확장자 검사
-        if ( /\.(jpe?g|png|gif)$/i.test( fileList.name ) ) {
+        if ( /\.(jpe?g|png|gif)$/i.test(fileList.name)) {
             let reader = new FileReader();
             reader.addEventListener( "load", function() {
                 let image = new Image();
-                image.width = "264";
-                image.height = "264";
+                image.width = "280";
+                image.height = "280";
                 image.title = fileList.name;
                 image.src = this.result;
-                // @details 이미지 확장자 검사
-                document.getElementById( "thumbnailImgs" ).appendChild( image );
+                document.getElementById( "uploadImgs" ).appendChild(image);
             }, false );
             // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
             if( fileList ) {
@@ -50,7 +49,13 @@ function uploadImgPreview() {
             }
         }
     }
-    if( fileList ) {
+    if(fileList) {
         [].forEach.call( fileList, readAndPreview );
+    }
+}
+
+function fnResetUploadImage() {
+    if (fileList) {
+        console.log('s');
     }
 }

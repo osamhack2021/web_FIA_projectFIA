@@ -27,10 +27,30 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/modal.css" rel="stylesheet">
   <link href="assets/css/write.css" rel="stylesheet">
 </head>
 
 <body>
+
+  <!-- Show Image Modal -->
+  <div id="showImageModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">업로드 미리보기</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="uploadImgs"></div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary btn-block btn-lg" value="초기화" onclick="fnResetUploadImage()">
+        </div>
+        </div>
+      </div>
+    </div>
+  </div> 
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -118,17 +138,15 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <div class="filebox">
-                <label for="upload">이미지 업로드</label>
+                <label for="upload">업로드</label>
                 <input type="file" id="upload" onChange="uploadImgPreview();" accept="image/*" multiple class="form-control">
-                <span class="explanation">&nbsp;* 첨부파일은 최대 3개까지 업로드 가능합니다.</span>
+                <span class="explanation">&nbsp;* 이미지 첨부는 최대 3개까지 업로드 가능합니다.</span>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <input type="button" value="등록된 이미지 확인하기" class="form-control">
+              <input type="button" value="업로드 미리보기" onclick="$('#showImageModal').modal('show');" class="form-control">
             </div>
           </div>
-
-          <div id="thumbnailImgs"></div>
 
           <hr class="mb-4">
 
