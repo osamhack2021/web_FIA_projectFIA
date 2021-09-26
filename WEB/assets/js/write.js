@@ -6,7 +6,16 @@ $(document).ready(function () {
         location.href = '/WEB/index.html';
     }
 
-    // $("#writeType").text(writeType === 'lost' ? '찾아주세요!' : '찾아가세요!');
+    $('#date').datepicker({
+        format: "yyyy-mm-dd", 
+        autoclose : true, 
+        todayHighlight : true, 
+        language : "ko"
+    }).datepicker("setDate", new Date());
+
+    $("#type").val(writeType === 'lost' ? "찾아주세요!" : "찾아가세요!").prop("selected", true);
+    // sessionStorage.setItem('userID', 'TEST');
+    $("#user").val(sessionStorage.getItem('userID'));
 });
 
 function getParameterByName(name) { 
