@@ -27,7 +27,7 @@ function getParameterByName(name) {
     return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, " ")); 
 }
 
-let fileList; 
+let images = [];
 
 function uploadImgPreview() {
     fileList = document.getElementById( "upload" ).files;
@@ -41,6 +41,7 @@ function uploadImgPreview() {
                 image.height = "280";
                 image.title = fileList.name;
                 image.src = this.result;
+                images.push(image);
                 document.getElementById( "uploadImgs" ).appendChild(image);
             }, false );
             // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
@@ -49,13 +50,14 @@ function uploadImgPreview() {
             }
         }
     }
-    if(fileList) {
+    if(fileList.length > 3 || fileList.length + images.length > 3) {
+        alert('이미지 첨부는 최대 3개까지 가능합니다.');
+    } else if (fileList.length > 0){
         [].forEach.call( fileList, readAndPreview );
     }
 }
 
 function fnResetUploadImage() {
-    if (fileList) {
-        console.log('s');
-    }
+    images = [];
+    document.getElementById("uploadImgs").innerText = '';
 }

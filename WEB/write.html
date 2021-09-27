@@ -137,14 +137,14 @@
 
           <div class="row">
             <div class="col-md-6 mb-3">
+              <input type="button" value="업로드 미리보기" onclick="$('#showImageModal').modal('show');" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
               <div class="filebox">
                 <label for="upload">업로드</label>
                 <input type="file" id="upload" onChange="uploadImgPreview();" accept="image/*" multiple class="form-control">
                 <span class="explanation">&nbsp;* 이미지 첨부는 최대 3개까지 업로드 가능합니다.</span>
               </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="button" value="업로드 미리보기" onclick="$('#showImageModal').modal('show');" class="form-control">
             </div>
           </div>
 
