@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from account.models import User
+from accounts.models import User
 
 class Post(models.Model):
     # 1. 게시글의 id 값
@@ -12,6 +12,7 @@ class Post(models.Model):
     revised_at = models.DateTimeField(auto_now=True)
     # 4. 작성자
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
     # 5. 본문
     body = models.TextField()
     # 6. 태그설정

@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
+rank_lists = (
+        ('private', '이병'),
+        ('first_class private', '일병'),
+        ('corporal', '상병'),
+        ('sergeant', '병장'),
+        ('executive', '간부 및 장교'),
+    )
 
 class UserManager(BaseUserManager):
     # 일반 user 생성
@@ -41,17 +48,10 @@ class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(default='', max_length=100, null=False, blank=False, unique=True, help_text='이메일')
     army_num = models.CharField(default='', max_length=100, null=False, blank=False, unique=True, help_text='**-********')
-    # army_rank = models.CharField(default='', max_length=50, null=False, blank=False)
-    rank_lists = (
-        ('private', '이병'),
-        ('first_class private', '일병'),
-        ('corporal', '상병'),
-        ('sergeant', '병장'),
-        ('executive', '간부 및 장교'),
-    )
     army_rank = models.CharField(max_length=50, choices=rank_lists, default=rank_lists[0][0])
     name = models.CharField(default='', max_length=100, null=False, blank=False, help_text='본명')
     joined_date = models.DateTimeField('가입일', default=timezone.now)
+    
     # User 모델의 필수 field
     is_active = models.BooleanField(default=True)    
     is_admin = models.BooleanField(default=False)

@@ -22,10 +22,3 @@ urlpatterns =[
     path('', post_list),
     path('<int:pk>/', post_detail),
 ]
-
-# urlpatterns = [
-#     path('', views.PostList.as_view()),
-#     path('<int:pk>/', views.PostDetail.as_view()),
-# ]
-
-# urlpatterns = format_suffix_patterns(urlpatterns)
