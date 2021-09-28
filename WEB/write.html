@@ -81,7 +81,7 @@
     <section class="inner-page">
       
       <div class="container w-50">
-        <form class="validation-form" novalidate>
+        <form class="validation-form" action="index.html" onsubmit="return fnOnSubmit();" novalidate>
           
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -90,8 +90,8 @@
               <div class="invalid-feedback"> 제목을 입력해주세요. </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="user">작성자</label>
-              <input type="text" class="form-control" id="user" placeholder="" value="" required readonly>
+              <label for="userID">작성자</label>
+              <input type="text" class="form-control" id="userID" placeholder="" value="" required readonly>
             </div>
           </div>
 
@@ -116,8 +116,8 @@
               </select>
             </div>
             <div class="col-md-6 mb-3"> 
-              <label for="tag">글 유형</label> 
-              <select class="custom-select d-block" id="type">
+              <label for="writeType">글 유형</label> 
+              <select class="custom-select d-block" id="writeType">
                 <option>찾아주세요!</option>
                 <option>찾아가세요!</option>
               </select>
@@ -142,7 +142,7 @@
             <div class="col-md-6 mb-3">
               <div class="filebox">
                 <label for="upload">업로드</label>
-                <input type="file" id="upload" onChange="uploadImgPreview();" accept="image/*" multiple class="form-control">
+                <input type="file" id="upload" onChange="fnUploadImgPreview();" accept="image/*" multiple class="form-control">
                 <span class="explanation">&nbsp;* 이미지 첨부는 최대 3개까지 업로드 가능합니다.</span>
               </div>
             </div>

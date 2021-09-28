@@ -1,3 +1,9 @@
+let images = [];
+
+const WRITE_KEY = ['title', 'userID', 'place', 'details', 'tag', 'writeType', 'date', 'time'];
+const WRITE_KEY_KO = ['제목', '작성자', '습득장소(특이사항)', '세부사항', '태그', '글 유형', '습득 날짜', '습득 시각'];
+
+
 $(document).ready(function () {
     
     let writeType = getParameterByName('writeType');
@@ -15,9 +21,10 @@ $(document).ready(function () {
 
     $('#time').timepicki();
 
-    $("#type").val(writeType === 'lost' ? "찾아주세요!" : "찾아가세요!").prop("selected", true);
+    $("#writeType").val(writeType === 'lost' ? "찾아주세요!" : "찾아가세요!").prop("selected", true);
     // sessionStorage.setItem('userID', 'TEST');
     $("#user").val(sessionStorage.getItem('userID'));
+    
 });
 
 function getParameterByName(name) { 
@@ -27,26 +34,23 @@ function getParameterByName(name) {
     return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, " ")); 
 }
 
-let images = [];
-
-function uploadImgPreview() {
-    fileList = document.getElementById( "upload" ).files;
+function fnUploadImgPreview() {
+    fileList = document.getElementById("upload").files;
     
-    function readAndPreview( fileList ) {
+    function readAndPreview(fileList) {
         if ( /\.(jpe?g|png|gif)$/i.test(fileList.name)) {
             let reader = new FileReader();
-            reader.addEventListener( "load", function() {
+            reader.addEventListener("load", function() {
                 let image = new Image();
                 image.width = "280";
                 image.height = "280";
                 image.title = fileList.name;
                 image.src = this.result;
                 images.push(image);
-                document.getElementById( "uploadImgs" ).appendChild(image);
+                document.getElementById("uploadImgs").appendChild(image);
             }, false );
-            // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
-            if( fileList ) {
-                reader.readAsDataURL( fileList );
+            if(fileList) {
+                reader.readAsDataURL(fileList);
             }
         }
     }
@@ -60,4 +64,27 @@ function uploadImgPreview() {
 function fnResetUploadImage() {
     images = [];
     document.getElementById("uploadImgs").innerText = '';
+}
+
+function fnOnSubmit() {
+    let data = new Object();
+
+    for (let i = 0; i < WRITE_KEY.length; i++) {
+        let tmp = document.getElementById(WRITE_KEY[i]).value;
+        if (!tmp) {
+            alert(`${WRITE_KEY_KO[i]}을(를) 작성해 주세요.`);
+            return false;
+        }
+        data[WRITE_KEY[i]] = tmp;
+    }
+
+    console.log(data);
+    getAcquireDateTime(data["date"], data["time"]);
+
+    return false;
+}
+
+function getAcquireDateTime(date, time) {
+    let dateTime = new Date(`${date} ${time}`);
+    console.log(dateTime);
 }
