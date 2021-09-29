@@ -60,7 +60,7 @@
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
 
-        <form class="validation-form" action="index.html" onsubmit="return fnOnSubmit();" novalidate>
+        <form class="validation-form" novalidate>
           
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -116,7 +116,7 @@
 
           <hr class="mb-4">
           <textarea rows="3" class="form-control" id="add"></textarea>
-          <button class="btn btn-success" type="button">댓글 추가</button>
+          <button class="btn btn-success" type="button" onclick="fnAddCommentCheck();">댓글 추가</button>
           
         </form>
 
@@ -184,6 +184,7 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="assets/js/eq.js"></script>
   <script src="assets/js/post.js"></script>
 
 </body>

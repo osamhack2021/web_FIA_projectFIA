@@ -37,8 +37,8 @@ $(document).ready(function () {
 function initDataTableLost() {
     var table = $('#dataTableLost').DataTable({
         "ajax" : {
-            url : '/WEB/assets/data.json', 
-            // url : 'https://osamhack2021-web-cloud-fia-projectfia-69vqjw6x5fxvv4-8000.githubpreview.dev/WEB/assets/data.json', 
+            url : '/WEB/assets/test-data.json', 
+            // url : 'https://osamhack2021-web-cloud-fia-projectfia-69vqjw6x5fxvv4-8000.githubpreview.dev/WEB/assets/test-data.json', 
             // ajax web url test
             type : 'GET', 
             error : function(xhr, status, error) {
@@ -110,7 +110,7 @@ function initDataTableLost() {
 
     $('#dataTableLost tbody').on('click', 'button', function () {
         var data = table.row( $(this).parents('tr')).data();
-        console.log(data[4]);
+        window.open(`post.html?postNo=${data[4]}`);
     });
 }
 
@@ -120,7 +120,7 @@ function initDataTableLost() {
 function initDataTableFound() {
     var table = $('#dataTableFound').DataTable({
         "ajax" : {
-            url : '/WEB/assets/data.json', 
+            url : '/WEB/assets/test-data.json', 
             type : 'GET', 
             error : function(xhr, status, error) {
                 // console.log(xhr);
@@ -191,6 +191,6 @@ function initDataTableFound() {
 
     $('#dataTableFound tbody').on('click', 'button', function () {
         var data = table.row( $(this).parents('tr')).data();
-        console.log(data[4]);
+        window.open(`post.html?postNo=${data[4]}`);
     });
 }
