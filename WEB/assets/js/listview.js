@@ -23,11 +23,17 @@ const LANGUAGE_OPTION = {
     }
 };
 
+/**
+ * listview.html
+ */
 $(document).ready(function () {
     initDataTableLost();
     initDataTableFound();
 });
 
+/**
+ * 찾아주세요! 게시판 init
+ */
 function initDataTableLost() {
     var table = $('#dataTableLost').DataTable({
         "ajax" : {
@@ -108,6 +114,9 @@ function initDataTableLost() {
     });
 }
 
+/**
+ * 찾아가세요! 게시판 init
+ */
 function initDataTableFound() {
     var table = $('#dataTableFound').DataTable({
         "ajax" : {

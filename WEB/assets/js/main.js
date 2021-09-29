@@ -199,6 +199,12 @@
 
 })(jQuery);
 
+
+/**
+ * 로그인, 회원가입 modal 실행
+ * 
+ * @param {string} type modal type
+ */
 function fnLORModal(type) {
   if (type === 'login') {
     $('#loginModal').modal('show');

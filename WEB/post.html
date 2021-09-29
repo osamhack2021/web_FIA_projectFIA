@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -22,35 +22,13 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/datepicker/css/datepicker.css" rel="stylesheet">
-  <link href="assets/vendor/timepicker/css/timepicker.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/modal.css" rel="stylesheet">
-  <link href="assets/css/write.css" rel="stylesheet">
+
 </head>
 
 <body>
-
-  <!-- Show Image Modal -->
-  <div id="showImageModal" class="modal fade">
-    <div class="modal-dialog modal-login">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">업로드 미리보기</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div id="uploadImgs"></div>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-primary btn-block btn-lg" value="초기화" onclick="fnResetUploadImage()">
-        </div>
-        </div>
-      </div>
-    </div>
-  </div> 
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -68,98 +46,71 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h4>글 작성하기</h2>
+          <h4>자세히 보기</h2>
           <ol>
             <li><a href="index.html">홈</a></li>
-            <li>글 작성하기</li>
+            <li>자세히 보기</li>
           </ol>
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
 
-    <section class="inner-page">
-      
-      <div class="container w-50">
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
         <form class="validation-form" action="index.html" onsubmit="return fnOnSubmit();" novalidate>
           
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="title">제목</label>
-              <input type="text" class="form-control" id="title" placeholder="" value="" required>
+              <input type="text" class="form-control" id="title" placeholder="" value="" readonly>
               <div class="invalid-feedback"> 제목을 입력해주세요. </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="userID">작성자</label>
-              <input type="text" class="form-control" id="userID" placeholder="" value="" required readonly>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3"> 
-              <label for="tag">태그</label> 
-              <select class="custom-select d-block" id="tag">
-                <option value=""></option>
-                <option>검색</option>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3"> 
-              <label for="writeType">글 유형</label> 
-              <select class="custom-select d-block" id="writeType">
-                <option>찾아주세요!</option>
-                <option>찾아가세요!</option>
-              </select>
+              <input type="text" class="form-control" id="userID" placeholder="" value="" readonly>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="date">습득 날짜</label> 
-              <input type="text" id="date" class="form-control">
+              <label for="tag">태그</label>
+              <input type="text" class="form-control" id="tag" placeholder="" value="" readonly>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="time">습득 시각</label> 
-              <input type="text" id="time" name="dateTime" class="form-control">
+              <label for="writeType">글 유형</label>
+              <input type="text" class="form-control" id="writeType" placeholder="" value="" readonly>
             </div>
           </div>
 
-          <!-- 이미지 업로드
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="button" value="이미지 업로드 미리보기" onclick="$('#showImageModal').modal('show');" class="form-control">
+              <label for="date">습득 날짜</label>
+              <input type="text" class="form-control" id="date" placeholder="" value="" readonly>
             </div>
             <div class="col-md-6 mb-3">
-              <div class="filebox">
-                <label for="upload">이미지</label>
-                <input type="file" id="upload" onChange="fnUploadImgPreview();" accept="image/*" multiple class="form-control">
-                <span class="explanation">&nbsp;* 이미지 첨부는 최대 3개까지 업로드 가능합니다.</span>
-              </div>
+              <label for="time">습득 시각</label>
+              <input type="text" class="form-control" id="time" placeholder="" value="" readonly>
             </div>
           </div>
-          -->
+
           <div class="mb-3"> 
             <label for="place">습득장소(특이사항)</label> 
-            <textarea rows="5" class="form-control" id="place" placeholder="" value="" required></textarea>
+            <textarea rows="5" class="form-control" id="place" placeholder="" value="" readonly></textarea>
             <div class="invalid-feedback"> 습득장소(특이사항)을 입력해주세요. </div>
           </div>
 
           <div class="mb-3"> 
             <label for="details">세부사항</label> 
-            <textarea rows="10" class="form-control" id="details" placeholder="" value="" required></textarea>
+            <textarea rows="10" class="form-control" id="details" placeholder="" value="" readonly></textarea>
             <div class="invalid-feedback"> 세부사항을 입력해주세요. </div>
           </div>
 
           <hr class="mb-4">
-
-          <!--
-          <div class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" id="aggrement"
-              required> <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-          </div>
-          -->
-          <div class="mb-4"></div> 
-          <button class="btn btn-success btn-lg btn-block" type="submit">작성 완료</button>
-        </form>
         
+
       </div>
     </section>
 
@@ -222,12 +173,9 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/datepicker/js/bootstrap-datepicker.js"></script>
-  <script src="assets/vendor/datepicker/js/bootstrap-datepicker.ko.min.js"></script>
-  <script src="assets/vendor/timepicker/js/timepicker.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/write.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 
