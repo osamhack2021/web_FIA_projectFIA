@@ -1,7 +1,7 @@
 let images = [];
 
-const WRITE_KEY = ['title', 'userID', 'place', 'details', 'tag', 'writeType', 'date', 'time'];
-const WRITE_KEY_KO = ['제목', '작성자', '습득장소(특이사항)', '세부사항', '태그', '글 유형', '습득 날짜', '습득 시각'];
+const WRITE_KEY = ['title', 'userID', 'tag', 'writeType', 'date', 'time', 'place', 'details'];
+const WRITE_KEY_KO = ['제목', '작성자', '태그', '글 유형', '습득 날짜', '습득 시각', '습득장소(특이사항)', '세부사항'];
 
 /**
  * write.html 
