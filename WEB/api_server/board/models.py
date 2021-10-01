@@ -47,3 +47,6 @@ class Post(models.Model):
         ('completed', '거래 완료'),
     )
     post_status = models.CharField(max_length=30, choices=status_lists, default=status_lists[0][0])
+
+    def __str__(self):
+        return self.title
