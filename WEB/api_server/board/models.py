@@ -42,4 +42,8 @@ class Post(models.Model):
     )
     board_type = models.CharField(max_length=30, choices=board_lists, default=board_lists[0][0])
     
-
+    status_lists =(
+        ('ongoing','거래 진행 중'),
+        ('completed', '거래 완료'),
+    )
+    post_status = models.CharField(max_length=30, choices=status_lists, default=status_lists[0][0])
