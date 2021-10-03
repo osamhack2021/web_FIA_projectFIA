@@ -48,5 +48,18 @@ class Post(models.Model):
     )
     post_status = models.CharField(max_length=30, choices=status_lists, default=status_lists[0][0])
 
-    def __str__(self):
-        return self.title
+
+
+class Comment(models.Model):
+    id = models.AutoField(primary_key=True, null=False, blank=False)
+    post = models.ForeignKey(Post, related_name='comments', null=False, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='comments', null=False, blank=False, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    revised_at = models.DateTimeField(auto_now=True)
+    body = models.TextField()
+
+
+
+
+

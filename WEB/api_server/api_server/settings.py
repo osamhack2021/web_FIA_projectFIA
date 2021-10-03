@@ -49,11 +49,13 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'allauth',
-    # 'allauth.account',
-
+    'allauth.account',
+    
     # myapp
     'board',
     'accounts',
+
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # cors 헤더 관련 미들웨어 추가
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'api_server.urls'
 
