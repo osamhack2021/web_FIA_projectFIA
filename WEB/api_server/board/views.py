@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .permissions import IsAdminOwnerOrReadOnly
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Post의 목록, detail 보여주기, 수정하기, 삭제하기 모두 가능
 class PostViewSet(viewsets.ModelViewSet):
@@ -17,10 +17,15 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
     # filter_backends = [DjangoFilterBackend]
-    filter_backends = [SearchFilter]
+    filter_backends = [SearchFilter, DjangoFilterBackend, OrderingFilter]
 
-    # filter_fields = ['title']
+    # 검색시 & 기능 사용가능, 정확하게 매칭이 되어야 검색 결과가 나온다.
+    filter_fields = ['user', 'tag', 'board_type', 'post_status']
+    # 검색시 search=... 형태로 사능 가능, 검색 내용이 포함된 결과물들을 보여준다.
     search_fields = ['title', 'body',]
+
+    ordering_fields = ['id']
+    ordering = ['-id']
 
 
     # Post 데이터 get 요청에 대한 양식 변경
