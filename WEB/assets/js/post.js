@@ -16,7 +16,23 @@ $(document).ready(function() {
             location.href = 'index.html';
         }
     });
-
+    
+    // 서버와 GET 요청 테스트
+    /*
+    $.ajax({
+        url: "https://osamhack2021-web-cloud-fia-projectfia-9wx5g7wx3xwq-8000.githubpreview.dev/board/", 
+        dataType: "json", 
+        type: "GET", 
+        success: function(data) { 
+            console.log(data);
+        }, 
+        error: function(request, status, error) {
+            console.log(request);
+            console.log(status);
+            console.log(error);
+        }
+    });
+    */
 });
 
 function fnSetPostInfo(data) {
