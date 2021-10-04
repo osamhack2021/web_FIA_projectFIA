@@ -1,11 +1,13 @@
 #데이터 처리
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from dj_rest_auth.jwt_auth import JWTCookieAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .permissions import IsAdminOwnerOrReadOnly
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 # Post의 목록, detail 보여주기, 수정하기, 삭제하기 모두 가능
 class PostViewSet(viewsets.ModelViewSet):
@@ -13,6 +15,13 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsAdminOwnerOrReadOnly]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    # filter_backends = [DjangoFilterBackend]
+    filter_backends = [SearchFilter]
+
+    # filter_fields = ['title']
+    search_fields = ['title', 'body',]
+
 
     # Post 데이터 get 요청에 대한 양식 변경
     def list(self, request, *args, **kwargs):
