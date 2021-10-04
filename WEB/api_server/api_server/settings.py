@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'accounts',
 
     'corsheaders',
+
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -209,3 +211,4 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
 }
+
