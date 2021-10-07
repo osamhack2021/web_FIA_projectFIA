@@ -1,9 +1,4 @@
-/**
-* Template Name: eNno - v2.2.1
-* Template URL: https://bootstrapmade.com/enno-free-simple-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 !(function($) {
   "use strict";
 
@@ -212,4 +207,53 @@ function fnLORModal(type) {
     $('#loginModal').modal('hide'); 
     $('#registerModal').modal('show'); 
   }
+}
+
+function fnRegister() {
+
+  let email = document.getElementById('email').value;
+  let password1 = document.getElementById('password1').value;
+  let password2 = document.getElementById('password2').value;
+  let army_num = document.getElementById('army_num').value;
+  let army_rank = document.getElementById('army_rank').value;
+  let name = document.getElementById('name').value;
+
+  var regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+
+  if (password1 != password2) {
+    alert('동일한 패스워드를 입력해 주십시오.');
+    return false;
+  } else if (email.match(regExpEmail) == null) {
+    alert('이메일 형식이 올바르지 않습니다.');
+    return false;
+  } else if (email.length > 100) {
+    alert('이메일 길이는 최대 100글자까지 가능합니다.');
+    return false;
+  } 
+
+  switch(army_rank) {
+    case '이병':
+      army_rank = 'private';
+      break;
+    case '일병':
+      army_rank = 'first_class private';
+      break;
+    case '상병':
+      army_rank = 'corporal';
+      break;
+    case '병장':
+      army_rank = 'sergeant';
+      break;
+    default :
+      army_rank = 'executive';
+      break;
+  } 
+
+  console.log(email);
+  console.log(password1);
+  console.log(password2);
+  console.log(army_num);
+  console.log(army_rank);
+  console.log(name);
+  return false; 
 }

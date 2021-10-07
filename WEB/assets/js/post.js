@@ -18,21 +18,33 @@ $(document).ready(function() {
     });
     
     // 서버와 GET 요청 테스트
-    /*
+    
     $.ajax({
-        url: "https://osamhack2021-web-cloud-fia-projectfia-9wx5g7wx3xwq-8000.githubpreview.dev/board/", 
+        url: "https://osamhack2021-web-cloud-fia-projectfia-976rpwvg5f7x99-8000.githubpreview.dev/accounts/", 
         dataType: "json", 
-        type: "GET", 
+        type: "POST", 
+        data: {
+            "username": "",
+            "email": "rickysbcwws@naver.com",
+            "password1": "1q2w3e4r!",
+            "password2": "1q2w3e4r!",
+            "army_num": "21-76008799",
+            "army_rank": 'private',
+            "name": "조우성"
+        }, 
         success: function(data) { 
             console.log(data);
         }, 
         error: function(request, status, error) {
-            console.log(request);
+            if (request.responseText.length > 1000) {
+                
+            }
+            console.log(request.responseText);
             console.log(status);
             console.log(error);
         }
     });
-    */
+    
 });
 
 function fnSetPostInfo(data) {
