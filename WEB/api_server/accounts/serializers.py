@@ -1,6 +1,10 @@
 from .models import User, rank_lists
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from rest_framework.exceptions import ValidationError
+from allauth.account.adapter import get_adapter
+from allauth.utils import email_address_exists, get_username_max_length
+from allauth.account import app_settings as allauth_settings
 
 class UserSerializer(serializers.ModelSerializer):
     #오버라이딩, userserializer는 create 시에 입력 데이터에 대한 검증이 필수이다. 
@@ -24,6 +28,20 @@ class UserRegisterSerializer(RegisterSerializer):
     army_num = serializers.CharField(max_length=100, help_text='**-********')
     army_rank = serializers.ChoiceField(choices=rank_lists)
     name = serializers.CharField(max_length=100, help_text='본명')
+
+    def validate_army_num(self, value):
+
+        from .models import User
+
+        users = User.objects
+        ret = users.filter(army_num__iexact=value).exists()
+
+        if ret:
+            raise serializers.ValidationError(
+                    ('army_num must be unique.'),
+            )
+        return value
+
 
     def save(self, request):
         user = super().save(request)

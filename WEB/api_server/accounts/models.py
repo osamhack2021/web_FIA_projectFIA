@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
+
 rank_lists = (
         ('private', '이병'),
         ('first_class private', '일병'),
@@ -47,9 +48,9 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(default='', max_length=100, null=False, blank=False, unique=True, help_text='이메일')
-    army_num = models.CharField(default='', max_length=100, null=False, blank=False, unique=True, help_text='**-********')
+    army_num = models.CharField(max_length=100, null=False, blank=False, unique=True, help_text='**-********')
     army_rank = models.CharField(max_length=50, choices=rank_lists, default=rank_lists[0][0])
-    name = models.CharField(default='', max_length=100, null=False, blank=False, help_text='본명')
+    name = models.CharField(max_length=100, null=False, blank=False, help_text='본명')
     joined_date = models.DateTimeField('가입일', default=timezone.now)
     
     # User 모델의 필수 field
