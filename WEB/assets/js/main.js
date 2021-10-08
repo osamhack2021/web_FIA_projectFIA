@@ -195,6 +195,17 @@
 })(jQuery);
 
 
+function fnSetTextField() {
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('password1').value = '';
+  document.getElementById('password2').value = '';
+  document.getElementById('army_num').value = '';
+  document.getElementById('army_rank').value = '';
+  document.getElementById('name').value = '';
+}
+
 /**
  * 로그인, 회원가입 modal 실행
  * 
@@ -204,6 +215,7 @@ function fnLORModal(type) {
   if (type === 'login') {
     $('#loginModal').modal('show');
   } else if (type === 'register') {
+    fnSetTextField();
     $('#loginModal').modal('hide'); 
     $('#registerModal').modal('show'); 
   }
@@ -217,19 +229,6 @@ function fnRegister() {
   let army_num = document.getElementById('army_num').value;
   let army_rank = document.getElementById('army_rank').value;
   let name = document.getElementById('name').value;
-
-  var regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
-
-  if (password1 != password2) {
-    alert('동일한 패스워드를 입력해 주십시오.');
-    return false;
-  } else if (email.match(regExpEmail) == null) {
-    alert('이메일 형식이 올바르지 않습니다.');
-    return false;
-  } else if (email.length > 100) {
-    alert('이메일 길이는 최대 100글자까지 가능합니다.');
-    return false;
-  } 
 
   switch(army_rank) {
     case '이병':
@@ -249,11 +248,78 @@ function fnRegister() {
       break;
   } 
 
+  // 조건
+  var regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+  var regExpArmyNum = /^[0-9]{2}(-)[0-9]{5,8}$/;
+  var regExpPassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+
+  if (password1 != password2) {
+    alert('동일한 패스워드를 입력해 주십시오.');
+    return false;
+  } else if (email.match(regExpEmail) == null) {
+    alert('이메일 형식이 올바르지 않습니다.');
+    return false;
+  } else if (email.length > 50) {
+    alert('이메일은 최대 50글자까지 입력 가능합니다.');
+    return false;
+  } else if(name.length > 20) {
+    alert('이름의 길이는 최대 20글자까지 가능합니다.');
+    return false;
+  } else if (password1.match(regExpPassword) == null) {
+    alert('패스워드는 숫자, 영어, 특수문자를 포함한 8~50 글자까지 가능합니다.');
+    return false;
+  } else if (army_num.match(regExpArmyNum) == null) {
+    alert('군번 형식이 올바르지 않습니다.');
+    return false;
+  }
+
   console.log(email);
   console.log(password1);
   console.log(password2);
   console.log(army_num);
   console.log(army_rank);
   console.log(name);
-  return false; 
+
+  /*
+  $.ajax({
+    url: "https://osamhack2021-web-cloud-fia-projectfia-976rpwvg5f7x99-8000.githubpreview.dev/accounts/", 
+    dataType: "json", 
+    type: "POST", 
+    data: {
+      "username": "",
+      "email": email,
+      "password1": password1,
+      "password2": password2,
+      "army_num": army_num,
+      "army_rank": army_rank,
+      "name": name
+    }, 
+    success: function(data) { 
+      console.log(data);
+    }, 
+    error: function(request, status, error) {
+      if (request.responseText.length > 1000) {
+          alert('이미 가입된 이메일 또는 군번입니다.');
+          console.log(request);
+          console.log(request.responseText);
+          return false;
+      }
+      console.log(request.responseText);
+      console.log(status);
+      console.log(error);
+    }
+  });
+*/
+
+  alert('회원가입이 성공했습니다.');
+
+  fnSetTextField();
+  $('#registerModal').modal('hide'); 
+  $('#loginModal').modal('show'); 
+
+  return true; 
+}
+
+function fnSuccessRegister() {
+  console.log('');
 }
