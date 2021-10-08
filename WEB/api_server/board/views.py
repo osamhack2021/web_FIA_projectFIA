@@ -20,7 +20,7 @@ class PostViewSet(viewsets.ModelViewSet):
     filter_backends = [SearchFilter, DjangoFilterBackend, OrderingFilter]
 
     # 검색시 & 기능 사용가능, 정확하게 매칭이 되어야 검색 결과가 나온다.
-    filter_fields = ['user', 'tag', 'board_type', 'post_status']
+    filter_fields = ['user__email', 'tag', 'board_type', 'post_status']
     # 검색시 search=... 형태로 사능 가능, 검색 내용이 포함된 결과물들을 보여준다.
     search_fields = ['title', 'body',]
 

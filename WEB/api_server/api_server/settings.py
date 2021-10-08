@@ -178,7 +178,7 @@ REST_FRAMEWORK = {
     # ],
 
     # 전체 pagintion class 적용
-    'DEFAULT_PAGINATION_CLASS': 'api_server.pagination.CustomPagination', 'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'api_server.pagination.CustomPagination', 'PAGE_SIZE': 2,
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', 'PAGE_SIZE': 10,
 
     # filter 적용
