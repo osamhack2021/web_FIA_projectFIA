@@ -50,7 +50,17 @@
         }, 1500, 'easeInOutExpo');
       }
     }
+
+    // 로그인 세션이 존재할 경우
+    if (sessionStorage.getItem("userEmail")) {
+      document.getElementById('hdrBtn').innerText = '로그아웃';
+      document.getElementById('sttBtn').innerText = '마이페이지';
+    } else {
+      document.getElementById('hdrBtn').innerText = '로그인';
+      document.getElementById('sttBtn').innerText = '로그인';
+    }
   });
+
 
   // Mobile Navigation
   if ($('.nav-menu').length) {
@@ -194,8 +204,7 @@
 
 })(jQuery);
 
-
-function fnSetTextField() {
+function fnClearTextField() {
   document.getElementById('loginEmail').value = '';
   document.getElementById('loginPassword').value = '';
   document.getElementById('email').value = '';
@@ -212,10 +221,24 @@ function fnSetTextField() {
  * @param {string} type modal type
  */
 function fnLORModal(type) {
-  if (type === 'login') {
-    $('#loginModal').modal('show');
+  fnClearTextField();
+
+  if (type === 'hdr') {
+    if (sessionStorage.getItem('userEmail')) {
+      // 로그아웃
+      sessionStorage.clear();
+      location.href = 'index.html';
+    } else {
+      $('#loginModal').modal('show'); 
+    }
+  } else if (type === 'stt') {
+    if (sessionStorage.getItem('userEmail')) {
+      console.log('마이페이지');
+    } else {
+      $('#loginModal').modal('show'); 
+    }
+
   } else if (type === 'register') {
-    fnSetTextField();
     $('#loginModal').modal('hide'); 
     $('#registerModal').modal('show'); 
   }
@@ -249,9 +272,9 @@ function fnRegister() {
   } 
 
   // 조건
-  var regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
-  var regExpArmyNum = /^[0-9]{2}(-)[0-9]{5,8}$/;
-  var regExpPassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+  let regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+  let regExpPassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+  let regExpArmyNum = /^[0-9]{2}(-)[0-9]{5,8}$/;
 
   if (password1 != password2) {
     alert('동일한 패스워드를 입력해 주십시오.');
@@ -263,10 +286,10 @@ function fnRegister() {
     alert('이메일은 최대 50글자까지 입력 가능합니다.');
     return false;
   } else if(name.length > 20) {
-    alert('이름의 길이는 최대 20글자까지 가능합니다.');
+    alert('이름의 길이는 최대 20글자까지 입력 가능합니다.');
     return false;
   } else if (password1.match(regExpPassword) == null) {
-    alert('패스워드는 숫자, 영어, 특수문자를 포함한 8~50 글자까지 가능합니다.');
+    alert('패스워드는 숫자, 영어, 특수문자를 포함한 8~50 글자까지 입력 가능합니다.');
     return false;
   } else if (army_num.match(regExpArmyNum) == null) {
     alert('군번 형식이 올바르지 않습니다.');
@@ -280,9 +303,9 @@ function fnRegister() {
   console.log(army_rank);
   console.log(name);
 
-  /*
+  
   $.ajax({
-    url: "https://osamhack2021-web-cloud-fia-projectfia-976rpwvg5f7x99-8000.githubpreview.dev/accounts/", 
+    url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/",
     dataType: "json", 
     type: "POST", 
     data: {
@@ -309,17 +332,59 @@ function fnRegister() {
       console.log(error);
     }
   });
-*/
+
+  return false; 
 
   alert('회원가입이 성공했습니다.');
 
-  fnSetTextField();
+  fnClearTextField();
   $('#registerModal').modal('hide'); 
   $('#loginModal').modal('show'); 
 
   return true; 
 }
 
-function fnSuccessRegister() {
-  console.log('');
+function fnLogin() {
+  let regExpEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+  let regExpPassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+
+  let email = document.getElementById('loginEmail').value;
+  let password = document.getElementById('loginPassword').value;
+
+  if (email.match(regExpEmail) == null) {
+    alert('이메일 형식이 올바르지 않습니다.');
+    return false;
+  } else if (email.length > 50) {
+    alert('이메일은 최대 50글자까지 입력 가능합니다.');
+    return false;
+  }else if (password.match(regExpPassword) == null) {
+    alert('패스워드는 숫자, 영어, 특수문자를 포함한 8~50 글자까지 입력 가능합니다.');
+    return false;
+  }
+
+  $.ajax({
+    url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/login",
+    dataType: "json", 
+    type: "POST", 
+    data: {
+      "username" : "",
+      "email": email,
+      "password": password
+    }, 
+    success: function(data) { 
+      console.log(data);
+
+      return false;
+    }, 
+    error: function(request, status, error) {
+      console.log(request.responseText);
+      console.log(status);
+      console.log(error);
+
+      return false;
+    }
+  });
+
+  alert('반갑습니다 회원님!');
+  return false;
 }
