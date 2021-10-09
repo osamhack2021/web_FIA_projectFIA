@@ -13,7 +13,6 @@ class Post(models.Model):
     # 4. 작성자
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     username = models.CharField(max_length=100)
-    useremail = models.CharField(max_length=100)
     # 5. 본문
     body = models.TextField()
     # 6. 태그설정
