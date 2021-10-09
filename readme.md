@@ -42,7 +42,7 @@ $ yarn start or npm run start
 
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
- * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md) (수정예정)
+ * [BSD](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/backend/license.md) (수정예정)
 
 This project is licensed under the terms of the MIT license.
 
