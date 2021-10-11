@@ -50,6 +50,12 @@ $ yarn start or npm run start
 ## 프로젝트 사용법 (Getting Started)
 **마크다운 문법을 이용하여 자유롭게 기재**
 (추가예정)
+
+- [Swagger]
+- [Redoc]
+- [Backend 개발자가 직접 작성한 API 사용 문서](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/Project_FIA%20Backend%20API%20%EC%82%AC%EC%9A%A9%20%EB%AC%B8%EC%84%9C(%EC%B5%9C%EC%A2%85).pdf)
+
+
  
  ## 회의록 및 개발일지
   * [회의록](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/%ED%9A%8C%EC%9D%98%EB%A1%9D.md)
