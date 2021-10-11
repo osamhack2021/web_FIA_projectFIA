@@ -587,6 +587,10 @@ section {
   padding: 0;
 }
 
+.content-b {
+  color: #16df7e;
+}
+
 .about .content ul li {
   padding-bottom: 10px;
 }
