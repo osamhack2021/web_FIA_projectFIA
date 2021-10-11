@@ -1,7 +1,5 @@
 
 #  **Project FIA(Find it, Army!)**
-
-## 프로젝트 로고
 <img src="https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/logo.jpg"/>
 
 
