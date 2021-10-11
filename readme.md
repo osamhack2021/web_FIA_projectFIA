@@ -35,6 +35,9 @@ $ yarn start or npm run start
 **마크다운 문법을 이용하여 자유롭게 기재**
 (추가예정)
  
+ ## 회의록 및 개발일지
+  * [회의록](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/%ED%9A%8C%EC%9D%98%EB%A1%9D.md)
+ 
 
 ## 팀 정보 (Team Information)
 - Moon Je Woong (munjin0201@naver.com), Github Id: MoonJeWoong
