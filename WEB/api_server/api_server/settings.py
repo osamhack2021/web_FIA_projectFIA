@@ -173,9 +173,9 @@ REST_FRAMEWORK = {
     ),
 
     # api 결과 전송 형태 설정(마지막에 설정할 것, 이거 켜면 기존 api 관리창이 안뜨고 json만 반환됨)
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    # ],
 
     # 전체 pagintion class 적용
     'DEFAULT_PAGINATION_CLASS': 'api_server.pagination.CustomPagination', 'PAGE_SIZE': 10,
