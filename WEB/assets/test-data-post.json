@@ -1,17 +1,35 @@
 {
-    "title": "잃어버린 카드를 찾아드립니다.",
-    "userID": "tester12345",
-    "tag": "태그",
-    "writeType": "found", 
-    "dateTime": "2021-09-17 13:50", 
-    "place": "1중대 흡연장", 
-    "details": "신한 카드입니다.",
-    "comments": [
-        {"userID": "tester001", "dateTime": "2021-09-17-14:50", "content": "카드 scv 정보 어떻게 됩니까?"},
-        {"userID": "tester002", "dateTime": "2021-09-17-14:50", "content": "카톡 xxxxxxxxxxxxxxxxxxxxxxxxxxxx로 연락바랍니다."},
-        {"userID": "tester003", "dateTime": "2021-09-17-14:50", "content": "카드 scv 정보 어떻게 됩니까?"},
-        {"userID": "tester004", "dateTime": "2021-09-17-14:50", "content": "카드 scv 정보 어떻게 됩니까?"}, 
-        {"userID": "tester005", "dateTime": "2021-09-17-14:50", "content": "카드 scv 정보 어떻게 됩니까?"}
-    ]
-
+    "data": {
+        "id": 3,
+        "user": "wpdnd0201@gmail.com",
+        "username": "문일병",
+        "comments": [
+            {
+                "id": 4,
+                "user": "test3@test.com",
+                "username": "김민재",
+                "created_at": "2021-10-13T16:58:10.191298+09:00",
+                "revised_at": "2021-10-13T16:58:10.191326+09:00",
+                "body": "아 활동화 제 것 같습니다. 핸드폰 번호 010-9548-2567 로 연락 주시면 제가 찾으러 가겠습니다. 연락 주십시오!",
+                "post": 3
+            }, 
+            {
+                "id": 5,
+                "user": "test3@test.com",
+                "username": "김민재",
+                "created_at": "2021-10-13T16:58:10.191298+09:00",
+                "revised_at": "2021-10-13T16:58:10.191326+09:00",
+                "body": "아 댓글 잘못달았습니다!",
+                "post": 3
+            }
+        ],
+        "title": "260 사이즈 검은색 활동화 잃어버리신 분 찾아가십시오!",
+        "created_at": "2021-10-13T16:55:57.100915+09:00",
+        "revised_at": "2021-10-13T16:55:57.100947+09:00",
+        "body": "지난 10/9 풋살장에서 오후 3시경에 풋살 진행하셨던 병사들 중 주인이 계신 것 같습니다. 주기는 따로 되어 있지 않은데 앞 코가 살짝 까진 260 사이즈 검은색 활동화입니다. 잃어버린 장병께서는 댓글 달아주시면 연락드리겠습니다.",
+        "tag": "shoes",
+        "place": "국군지휘통신사령부 52대대 풋살장 A",
+        "board_type": "pick_up",
+        "post_status": "ongoing"
+    }
 }

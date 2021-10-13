@@ -1,9 +1,13 @@
 $(document).ready(function() {
+
     let postNo = getParameterByName('postNo');
+    console.log(postNo);
+
     $.ajax({
         url: "/WEB/assets/test-data-post.json", 
-        data: { 'postNo': postNo }, 
+        // url: `http://20.196.209.235/board/${postNo}/`, 
         dataType: "json", 
+        type: "GET", 
         success: function(data) { 
             fnSetPostInfo(data);
         }, 
@@ -18,7 +22,7 @@ $(document).ready(function() {
     });
     
     // 서버와 GET 요청 테스트
-    
+    /*
     $.ajax({
         url: "https://osamhack2021-web-cloud-fia-projectfia-976rpwvg5f7x99-8000.githubpreview.dev/accounts/", 
         dataType: "json", 
@@ -44,21 +48,23 @@ $(document).ready(function() {
             console.log(error);
         }
     });
+    */
     
 });
 
 function fnSetPostInfo(data) {
-    document.getElementById('title').value = data.title;
-    document.getElementById('userID').value = data.userID;
-    document.getElementById('tag').value = data.tag;
-    document.getElementById('writeType').value = data.writeType === 'lost' ? "찾아주세요!" : "찾아가세요!";
-    document.getElementById('place').value = data.place;
-    document.getElementById('details').value = data.details;
+    document.getElementById('title').value = data.data.title;
+    document.getElementById('userID').value = `${data.data.username} ( ${data.data.user} )`;
+    // document.getElementById('tag').value = data.tag;
+    // 태그 수정 해야함
+    document.getElementById('writeType').value = data.data.board_type === 'pick_up' ? "찾아가세요!" : "찾아주세요!";
+    document.getElementById('place').value = data.data.place;
+    document.getElementById('details').value = data.data.body;
 
     
 
-    for (const key in data.comments) {
-        fnAddComment(data.comments[key].userID, data.comments[key].dateTime, data.comments[key].content);
+    for (const key in data.data.comments) {
+        fnAddComment(data.data.comments[key].username, data.data.comments[key].created_at, data.data.comments[key].body);
     }
 }
 
