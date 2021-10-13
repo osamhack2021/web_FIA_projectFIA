@@ -1,10 +1,20 @@
+let postNo;
+
 $(document).ready(function() {
 
-    let postNo = getParameterByName('postNo');
-    console.log(postNo);
+    postNo = getParameterByName('postNo');
+
+    if (postNo == null) {
+        alert('잘못된 접근입니다.');
+        location.href = 'index.html';
+    } else if (sessionStorage.getItem('userToken') == null) {
+        alert('세션이 만료되었습니다. 로그인 해주세요.');
+        location.href = 'index.html';
+    }
 
     $.ajax({
-        url: "/WEB/assets/test-data-post.json", 
+        url: `https://moonjewoong.pythonanywhere.com/board/${postNo}/`, 
+        // url: "/WEB/assets/test-data-post.json", 
         // url: `http://20.196.209.235/board/${postNo}/`, 
         dataType: "json", 
         type: "GET", 
@@ -16,39 +26,10 @@ $(document).ready(function() {
             // console.log(status);
             // console.log(error);
 
-            alert('데이터 로딩에 실패했습니다.');
+            alert('데이터 로딩에 실패했습니다. 잠시 후 시도해주세요.');
             location.href = 'index.html';
         }
     });
-    
-    // 서버와 GET 요청 테스트
-    /*
-    $.ajax({
-        url: "https://osamhack2021-web-cloud-fia-projectfia-976rpwvg5f7x99-8000.githubpreview.dev/accounts/", 
-        dataType: "json", 
-        type: "POST", 
-        data: {
-            "username": "",
-            "email": "rickysbcwws@naver.com",
-            "password1": "1q2w3e4r!",
-            "password2": "1q2w3e4r!",
-            "army_num": "21-76008799",
-            "army_rank": 'private',
-            "name": "조우성"
-        }, 
-        success: function(data) { 
-            console.log(data);
-        }, 
-        error: function(request, status, error) {
-            if (request.responseText.length > 1000) {
-                
-            }
-            console.log(request.responseText);
-            console.log(status);
-            console.log(error);
-        }
-    });
-    */
     
 });
 
@@ -101,9 +82,34 @@ function fnAddComment(userInfo, dateTime, content) {
 }
 
 function fnAddCommentCheck() {
-    // let userID = 
-    let content = document.getElementById('add').value;
-    let dateTime = getAcquireDateTime(new Date().toISOString().split("T")[0], new Date().toTimeString().split(" ")[0]);
+    $.ajax({
+        url: "https://moonjewoong.pythonanywhere.com/board/comment/", 
+        // url: "/WEB/assets/test-data-post.json", 
+        // url: `http://20.196.209.235/board/${postNo}/`, 
+        dataType: "json", 
+        type: "POST", 
+        data: {
+            body: document.getElementById('add').value, 
+            post: postNo
+        }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization","Bearer " + sessionStorage.getItem('userToken'));
+        },
+        success: function(data) { 
+            console.log(data);
+            document.getElementById('add').value = '';
+            fnAddComment(`${data.username} ( ${data.user} )`, getDateTimePostFormat(data.created_at), data.body);
+        }, 
+        error: function(request, status, error) {
+            console.log(request);
+            console.log(status);
+            console.log(error);
+
+            alert('댓글 추가를 실패했습니다. 잠시 후 시도해주세요.');
+        }
+    });
+
+    
 }
 
 function getDateTimePostFormat(dateTimeParam) {
