@@ -64,26 +64,36 @@ function fnSetPostInfo(data) {
     
 
     for (const key in data.data.comments) {
-        fnAddComment(data.data.comments[key].username, data.data.comments[key].created_at, data.data.comments[key].body);
+        fnAddComment(`${data.data.comments[key].username} ( ${data.data.comments[key].user} )`, data.data.comments[key].created_at, data.data.comments[key].body);
     }
 }
 
-function fnAddComment(userID, dateTime, content) {
+function fnAddComment(userInfo, dateTime, content) {
 
     // div 추가
     const commentEl = document.createElement('div');
 
+    const rowEl = document.createElement('div');
     const lineEl = document.createElement('hr');
     const infoEl = document.createElement('div');
+    const timeEl = document.createElement('div');
     const contentEl = document.createElement('div');
 
     lineEl.classList.add('mb-4');
+    rowEl.classList.add('row');
+    infoEl.classList.add('col-md-9');
+    timeEl.classList.add('col-md-3');
     
-    infoEl.innerText = `${userID} ( ${dateTime} )`;
+    infoEl.innerText = userInfo;
+    timeEl.innerText = getDateTimePostFormat(dateTime);
     contentEl.innerText = content;
 
+    rowEl.appendChild(infoEl);
+    rowEl.appendChild(timeEl);
+
     commentEl.appendChild(lineEl);
-    commentEl.appendChild(infoEl);
+    commentEl.appendChild(rowEl);
+    commentEl.appendChild(document.createElement('br'));
     commentEl.appendChild(contentEl);
 
     document.getElementById('count').innerText = parseInt(document.getElementById('count').innerText) + 1;
@@ -94,4 +104,18 @@ function fnAddCommentCheck() {
     // let userID = 
     let content = document.getElementById('add').value;
     let dateTime = getAcquireDateTime(new Date().toISOString().split("T")[0], new Date().toTimeString().split(" ")[0]);
+}
+
+function getDateTimePostFormat(dateTimeParam) {
+    let dateTime = new Date(dateTimeParam);
+    const formatDate = (current_datetime)=>{
+        let formatted_date = current_datetime.getFullYear() + "-" 
+            + (current_datetime.getMonth() + 1) + "-" 
+            + current_datetime.getDate() + " " 
+            + current_datetime.getHours() + ":" 
+            + current_datetime.getMinutes();
+        return formatted_date;
+    }
+
+    return formatDate(dateTime);
 }
