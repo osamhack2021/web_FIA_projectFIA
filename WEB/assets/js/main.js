@@ -52,7 +52,7 @@
     }
 
     // 로그인 세션이 존재할 경우
-    if (sessionStorage.getItem("userEmail")) {
+    if (sessionStorage.getItem("userToken")) {
       document.getElementById('hdrBtn').innerText = '로그아웃';
       document.getElementById('sttBtn').innerText = '마이페이지';
     } else {
@@ -241,7 +241,7 @@ function fnLORModal(type) {
   fnClearTextField();
 
   if (type === 'hdr') {
-    if (sessionStorage.getItem('userEmail')) {
+    if (sessionStorage.getItem('userToken')) {
       // 로그아웃
       sessionStorage.clear();
       location.href = 'index.html';
@@ -249,7 +249,7 @@ function fnLORModal(type) {
       $('#loginModal').modal('show'); 
     }
   } else if (type === 'stt') {
-    if (sessionStorage.getItem('userEmail')) {
+    if (sessionStorage.getItem('userToken')) {
       console.log('마이페이지');
     } else {
       $('#loginModal').modal('show'); 
@@ -336,7 +336,7 @@ function fnRegister() {
     }, 
     success: function(data) { 
       console.log(data);
-      alert('회원가입이 성공했습니다.');  
+      alert('회원가입에 성공했습니다.');  
       fnClearTextField();
       $('#registerModal').modal('hide'); 
       $('#loginModal').modal('show'); 
@@ -374,6 +374,7 @@ function fnLogin() {
   }
 
   $.ajax({
+    // url 변경 필요 
     url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/login",
     dataType: "json", 
     type: "POST", 
@@ -383,19 +384,20 @@ function fnLogin() {
       "password": password
     }, 
     success: function(data) { 
-      console.log(data);
-
-      return false;
+      alert(`반갑습니다 ${data.user.name}님!`);
+      sessionStorage.setItem('userToken', data.access_token);
+      sessionStorage.setItem('userToken_R', data.refresh_token);
+      
+      location.href = 'index.html';
     }, 
     error: function(request, status, error) {
-      console.log(request.responseText);
-      console.log(status);
-      console.log(error);
+      alert('로그인에 실패했습니다.');
 
-      return false;
+      // console.log(request.responseText);
+      // console.log(status);
+      // console.log(error);
     }
   });
 
-  alert('반갑습니다 회원님!');
   return false;
 }
