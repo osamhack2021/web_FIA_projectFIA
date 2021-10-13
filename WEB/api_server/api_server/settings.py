@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ejcvhjq13&w^33@g0kzqg-0)c7c0mlg+s9+f4l1@er)%d7uo@o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -173,9 +173,9 @@ REST_FRAMEWORK = {
     ),
 
     # api 결과 전송 형태 설정(마지막에 설정할 것, 이거 켜면 기존 api 관리창이 안뜨고 json만 반환됨)
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    # ],
 
     # 전체 pagintion class 적용
     'DEFAULT_PAGINATION_CLASS': 'api_server.pagination.CustomPagination', 'PAGE_SIZE': 10,
