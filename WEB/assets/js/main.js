@@ -59,6 +59,23 @@
       document.getElementById('hdrBtn').innerText = '로그인';
       document.getElementById('sttBtn').innerText = '로그인';
     }
+
+    // 백엔드 api test\
+    /*
+    $.ajax({
+      url: "http://20.196.209.235:433/board/",
+      dataType: "json", 
+      type: "GET", 
+      success: function(data) { 
+        console.log(data);
+      }, 
+      error: function(request, status, error) {
+        console.log(request);
+        console.log(status);
+        console.log(error);
+      }
+    });
+    */
   });
 
 
@@ -303,8 +320,8 @@ function fnRegister() {
   console.log(army_rank);
   console.log(name);
 
-  
   $.ajax({
+    // url 변경 예정
     url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/",
     dataType: "json", 
     type: "POST", 
@@ -319,29 +336,23 @@ function fnRegister() {
     }, 
     success: function(data) { 
       console.log(data);
+      alert('회원가입이 성공했습니다.');  
+      fnClearTextField();
+      $('#registerModal').modal('hide'); 
+      $('#loginModal').modal('show'); 
     }, 
     error: function(request, status, error) {
-      if (request.responseText.length > 1000) {
-          alert('이미 가입된 이메일 또는 군번입니다.');
-          console.log(request);
-          console.log(request.responseText);
-          return false;
-      }
-      console.log(request.responseText);
-      console.log(status);
-      console.log(error);
+      alert('이미 가입된 이메일 또는 군번입니다.');
+
+      // console.log(request.responseText);
+
+      // console.log(request);
+      // console.log(status);
+      // console.log(error);
     }
   });
 
   return false; 
-
-  alert('회원가입이 성공했습니다.');
-
-  fnClearTextField();
-  $('#registerModal').modal('hide'); 
-  $('#loginModal').modal('show'); 
-
-  return true; 
 }
 
 function fnLogin() {
@@ -357,7 +368,7 @@ function fnLogin() {
   } else if (email.length > 50) {
     alert('이메일은 최대 50글자까지 입력 가능합니다.');
     return false;
-  }else if (password.match(regExpPassword) == null) {
+  } else if (password.match(regExpPassword) == null) {
     alert('패스워드는 숫자, 영어, 특수문자를 포함한 8~50 글자까지 입력 가능합니다.');
     return false;
   }
