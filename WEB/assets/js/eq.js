@@ -32,3 +32,18 @@
 
     return formatDate(dateTime);
 }
+
+function getTagOrName(chk, pam) {
+    let tag = [ 'else', 'army_uniform','running_shirts', 'underwear', 'underclothes', 'socks', 'shoes', 'towel', 'caps', 'phones', 'books', 'stationery' ];
+    let name = [ '기타류', '군복류', '런닝', '속옷', '내복', '양말', '신발류', '수건', '모자류', '핸드폰', '책', '문방구'];
+
+    if (pam === true) {
+        for (const key in tag) {
+            if (tag[key] === chk) return name[key];
+        }
+    } else {
+        for (const key in name) {
+            if (name[key] === chk) return tag[key];
+        }
+    }
+}

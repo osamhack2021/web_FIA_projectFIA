@@ -36,8 +36,7 @@ $(document).ready(function() {
 function fnSetPostInfo(data) {
     document.getElementById('title').value = data.data.title;
     document.getElementById('userID').value = `${data.data.username} ( ${data.data.user} )`;
-    // document.getElementById('tag').value = data.tag;
-    // 태그 수정 해야함
+    document.getElementById('tag').value = getTagOrName(data.data.tag, true);
     document.getElementById('writeType').value = data.data.board_type === 'pick_up' ? "찾아가세요!" : "찾아주세요!";
     document.getElementById('place').value = data.data.place;
     document.getElementById('details').value = data.data.body;
@@ -48,6 +47,7 @@ function fnSetPostInfo(data) {
         fnAddComment(`${data.data.comments[key].username} ( ${data.data.comments[key].user} )`, data.data.comments[key].created_at, data.data.comments[key].body);
     }
 }
+
 
 function fnAddComment(userInfo, dateTime, content) {
 
@@ -96,7 +96,6 @@ function fnAddCommentCheck() {
             xhr.setRequestHeader("Authorization","Bearer " + sessionStorage.getItem('userToken'));
         },
         success: function(data) { 
-            console.log(data);
             document.getElementById('add').value = '';
             fnAddComment(`${data.username} ( ${data.user} )`, getDateTimePostFormat(data.created_at), data.body);
         }, 
