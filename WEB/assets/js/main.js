@@ -60,22 +60,6 @@
       document.getElementById('sttBtn').innerText = '로그인';
     }
 
-    // 백엔드 api test\
-    /*
-    $.ajax({
-      url: "http://20.196.209.235:433/board/",
-      dataType: "json", 
-      type: "GET", 
-      success: function(data) { 
-        console.log(data);
-      }, 
-      error: function(request, status, error) {
-        console.log(request);
-        console.log(status);
-        console.log(error);
-      }
-    });
-    */
   });
 
 
@@ -242,9 +226,7 @@ function fnLORModal(type) {
 
   if (type === 'hdr') {
     if (sessionStorage.getItem('userToken')) {
-      // 로그아웃
-      sessionStorage.clear();
-      location.href = 'index.html';
+      fnLogout();
     } else {
       $('#loginModal').modal('show'); 
     }
@@ -313,16 +295,9 @@ function fnRegister() {
     return false;
   }
 
-  console.log(email);
-  console.log(password1);
-  console.log(password2);
-  console.log(army_num);
-  console.log(army_rank);
-  console.log(name);
-
   $.ajax({
     // url 변경 예정
-    url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/",
+    url: "https://moonjewoong.pythonanywhere.com/accounts/",
     dataType: "json", 
     type: "POST", 
     data: {
@@ -335,7 +310,6 @@ function fnRegister() {
       "name": name
     }, 
     success: function(data) { 
-      console.log(data);
       alert('회원가입에 성공했습니다.');  
       fnClearTextField();
       $('#registerModal').modal('hide'); 
@@ -375,7 +349,7 @@ function fnLogin() {
 
   $.ajax({
     // url 변경 필요 
-    url: "https://osamhack2021-web-cloud-fia-projectfia-g4xjg69vr3v665-8000.githubpreview.dev/accounts/login",
+    url: "https://moonjewoong.pythonanywhere.com/accounts/login/",
     dataType: "json", 
     type: "POST", 
     data: {
@@ -400,4 +374,31 @@ function fnLogin() {
   });
 
   return false;
+}
+
+function fnLogout() {
+  $.ajax({
+    // url 변경 필요 
+    url: "https://moonjewoong.pythonanywhere.com/accounts/logout/",
+    dataType: "json", 
+    type: "POST", 
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
+    },
+    data: {
+      refresh: sessionStorage.getItem('userToken_R')
+    }, 
+    success: function(data) { 
+      alert('로그아웃 되었습니다.');
+      sessionStorage.clear();
+      location.href = 'index.html';
+    }, 
+    error: function(request, status, error) {
+      alert('로그아웃이 실패했습니다.');
+
+      // console.log(request.responseText);
+      // console.log(status);
+      // console.log(error);
+    }
+  });
 }

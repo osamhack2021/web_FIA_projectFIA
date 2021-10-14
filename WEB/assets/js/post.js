@@ -7,7 +7,7 @@ $(document).ready(function() {
     if (postNo == null) {
         alert('잘못된 접근입니다.');
         location.href = 'index.html';
-    } else if (sessionStorage.getItem('userToken') == null) {
+    } else if (sessionStorage.getItem('userToken') == null || sessionStorage.getItem('userToken_R') == null) {
         alert('세션이 만료되었습니다. 로그인 해주세요.');
         location.href = 'index.html';
     }
@@ -93,7 +93,7 @@ function fnAddCommentCheck() {
             post: postNo
         }, 
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization","Bearer " + sessionStorage.getItem('userToken'));
+            xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
         },
         success: function(data) { 
             document.getElementById('add').value = '';
