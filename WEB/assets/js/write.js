@@ -1,6 +1,7 @@
 let images = [];
 
 const WRITE_KEY = ['title', 'userID', 'tag', 'writeType', 'date', 'time', 'place', 'details'];
+const WRITE_KEY_API = [];
 const WRITE_KEY_KO = ['제목', '작성자', '태그', '글 유형', '습득 날짜', '습득 시각', '습득장소(특이사항)', '세부사항'];
 
 /**
@@ -12,7 +13,30 @@ $(document).ready(function () {
     if (writeType === null || !(writeType === 'lost' || writeType === 'found')) {
         alert('잘못된 경로로 접근하였습니다.');
         location.href = '/WEB/index.html';
+    } else if (sessionStorage.getItem('userToken') == null || sessionStorage.getItem('userToken_R') == null) {
+        alert('세션이 만료되었습니다. 로그인 해주세요.');
+        location.href = 'index.html';
     }
+
+    $.ajax({
+        url: `https://moonjewoong.pythonanywhere.com/accounts/user/`, 
+        dataType: "json", 
+        type: "GET", 
+        success: function(data) { 
+            document.getElementById("userID").value = `${data.name} ( ${data.email} )`;
+        }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
+        },
+        error: function(request, status, error) {
+            // console.log(request);
+            // console.log(status);
+            // console.log(error);
+
+            alert('API 로딩에 실패했습니다. 잠시 후 시도해주세요.');
+            location.href = 'index.html';
+        }
+    });
 
     $('#date').datepicker({
         format: "yyyy-mm-dd", 
@@ -24,11 +48,10 @@ $(document).ready(function () {
     $('#time').timepicki();
 
     $("#writeType").val(writeType === 'lost' ? "찾아주세요!" : "찾아가세요!").prop("selected", true);
-    // sessionStorage.setItem('userID', 'TEST');
-    $("#user").val(sessionStorage.getItem('userID'));
     
-
-    document.getElementById("userID").value = 's';
+    document.getElementById('date_label').innerText = (writeType === 'lost' ? '분실 날짜' : '습득 날짜');
+    document.getElementById('time_label').innerText = (writeType === 'lost' ? '분실 시각' : '습득 시각');
+    document.getElementById('place_label').innerText = (writeType === 'lost' ? '분실 장소(특이사항)' : '습득 장소(특이사항)');
 });
 
 /**
@@ -83,18 +106,46 @@ function fnOnSubmit() {
         let tmp = document.getElementById(WRITE_KEY[i]).value;
         if (!tmp) {
             alert(`${WRITE_KEY_KO[i]}을(를) 작성해 주세요.`);
-            return false;
+            return;
         }
         data[WRITE_KEY[i]] = tmp;
     }
 
-    data["date"] = getAcquireDateTime(data["date"], data["time"]);
-    delete data["time"];
+    // console.log(data['title']);
+    // console.log(`${data['details']}\n\n${(data['writeType'] == '찾아가세요!' ? '습득 시각' : '분실 시각')} : [ ${getAcquireDateTime(data["date"], data["time"])} ]`);
+    // console.log(getTagOrName(data['tag'], false));
+    // console.log(data['place']);
+    // console.log( (data['writeType'] == '찾아가세요!' ? 'pick_up' : 'request') );
 
+    // return;
 
-    // JSON으로 변환 
-    // POST로 서버에 전송해야함
-    console.log(JSON.stringify(data));
+    $.ajax({
+        url: `https://moonjewoong.pythonanywhere.com/board/`, 
+        dataType: "json", 
+        type: "POST", 
+        data: {
+            title: data['title'], 
+            body: `${data['details']}\n\n${(data['writeType'] == '찾아가세요!' ? '습득 시각' : '분실 시각')} : [ ${getAcquireDateTime(data["date"], data["time"])} ]`, 
+            tag: getTagOrName(data['tag'], false), 
+            place: data['place'], 
+            board_type: (data['writeType'] == '찾아가세요!' ? 'pick_up' : 'request'), 
+            post_status: 'ongoing' 
+        }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
+        },
+        success: function(data) { 
+            alert('게시글 업로드를 성공했습니다. 홈으로 이동합니다');
+            location.href = 'index.html';
+            // console.log(data);
+        }, 
+        error: function(request, status, error) {
+            // console.log(request);
+            // console.log(status);
+            // console.log(error);
+
+            alert('게시글 업로드를 실패했습니다. 잠시 후 시도해주세요.');
+        }
+    });
     
-    return false;
 }

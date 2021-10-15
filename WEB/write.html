@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>아르미 분실물 센터 · FIA(Find it, Army!)</title>
+  <title>군 장병 분실물 상태 공유 플랫폼 · FIA(Find it, Army!)</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -81,7 +81,7 @@
     <section class="inner-page">
       
       <div class="container w-50">
-        <form class="validation-form" action="index.html" onsubmit="return fnOnSubmit();" novalidate>
+        <form class="validation-form" action="" novalidate>
           
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -100,7 +100,18 @@
               <label for="tag">태그</label> 
               <select class="custom-select d-block" id="tag">
                 <option value=""></option>
-                <option>검색</option>
+                <option>군복류</option>
+                <option>런닝</option>
+                <option>속옷</option>
+                <option>내복</option>
+                <option>양말</option>
+                <option>신발류</option>
+                <option>수건</option>
+                <option>모자류</option>
+                <option>핸드폰</option>
+                <option>책</option>
+                <option>문방구</option>
+                <option>기타류</option>
               </select>
             </div>
             <div class="col-md-6 mb-3"> 
@@ -114,11 +125,11 @@
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="date">습득 날짜</label> 
+              <label for="date" id="date_label"></label> 
               <input type="text" id="date" class="form-control">
             </div>
             <div class="col-md-6 mb-3">
-              <label for="time">습득 시각</label> 
+              <label for="time" id="time_label"></label> 
               <input type="text" id="time" name="dateTime" class="form-control">
             </div>
           </div>
@@ -138,7 +149,7 @@
           </div>
           -->
           <div class="mb-3"> 
-            <label for="place">습득장소(특이사항)</label> 
+            <label for="place" id="place_label">습득장소(특이사항)</label> 
             <textarea rows="5" class="form-control" id="place" placeholder="" value="" required></textarea>
             <div class="invalid-feedback"> 습득장소(특이사항)을 입력해주세요. </div>
           </div>
@@ -157,8 +168,9 @@
           </div>
           -->
           <div class="mb-4"></div> 
-          <button class="btn btn-success btn-lg btn-block" type="submit">작성 완료</button>
         </form>
+
+        <button class="btn btn-success btn-lg btn-block" onclick="fnOnSubmit();">작성 완료</button>
         
       </div>
     </section>
