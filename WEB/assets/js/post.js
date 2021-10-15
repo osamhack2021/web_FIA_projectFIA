@@ -8,7 +8,7 @@ $(document).ready(function() {
         alert('잘못된 접근입니다.');
         location.href = 'index.html';
     } else if (sessionStorage.getItem('userToken') == null || sessionStorage.getItem('userToken_R') == null) {
-        alert('세션이 만료되었습니다. 로그인 해주세요.');
+        alert('세션이 만료되었습니다. 로그인 후 이용해 주십시오.');
         location.href = 'index.html';
     }
 

@@ -14,7 +14,7 @@ $(document).ready(function () {
         alert('잘못된 경로로 접근하였습니다.');
         location.href = '/WEB/index.html';
     } else if (sessionStorage.getItem('userToken') == null || sessionStorage.getItem('userToken_R') == null) {
-        alert('세션이 만료되었습니다. 로그인 해주세요.');
+        alert('세션이 만료되었습니다. 로그인 후 이용해 주십시오.');
         location.href = 'index.html';
     }
 
@@ -47,11 +47,20 @@ $(document).ready(function () {
 
     $('#time').timepicki();
 
+    $("#writeType").change(function() {
+        if ($("#writeType").val() === '찾아주세요!') {
+            document.getElementById('date_label').innerText = '분실 날짜';
+            document.getElementById('time_label').innerText = '분실 시각';
+            document.getElementById('place_label').innerText = '분실 장소(특이사항)';
+        } else {
+            document.getElementById('date_label').innerText = '습득 날짜';
+            document.getElementById('time_label').innerText = '습득 시각';
+            document.getElementById('place_label').innerText = '습득 장소(특이사항)';
+        }
+    });
+
     $("#writeType").val(writeType === 'lost' ? "찾아주세요!" : "찾아가세요!").prop("selected", true);
-    
-    document.getElementById('date_label').innerText = (writeType === 'lost' ? '분실 날짜' : '습득 날짜');
-    document.getElementById('time_label').innerText = (writeType === 'lost' ? '분실 시각' : '습득 시각');
-    document.getElementById('place_label').innerText = (writeType === 'lost' ? '분실 장소(특이사항)' : '습득 장소(특이사항)');
+    $("#writeType").change();
 });
 
 /**
