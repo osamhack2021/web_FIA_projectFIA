@@ -1,0 +1,29 @@
+.filebox label { 
+    display: inline-block; 
+    padding: .5em .75em; 
+    color: #555; 
+    font-size: inherit; 
+    line-height: normal; 
+    vertical-align: middle; 
+    background-color: #fff; 
+    cursor: pointer; 
+    border: 1px solid #888; 
+    border-bottom-color: #8888; 
+    border-radius: .25em; 
+  } 
+  .filebox input[type="file"] { 
+    /* 파일 필드 숨기기 */ 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0; 
+  }
+  
+  .explanation {
+      color: #888;
+      font-size: 13px;
+  }

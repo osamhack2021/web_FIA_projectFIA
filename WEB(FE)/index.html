@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>군 장병 분실물 상태 공유 플랫폼 · FIA(Find it, Army!)</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/modal.css" rel="stylesheet">
+  <link href="assets/css/listview.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">로그인</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="index.html" onsubmit="return fnLogin();">
+            <div class="form-group">
+              <i class="fa fa-envelope"></i>
+              <input type="text" class="form-control" placeholder="이메일" required="required" id="loginEmail">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-lock"></i>
+              <input type="password" class="form-control" placeholder="패스워드" required="required" id="loginPassword">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-block btn-lg" value="로그인">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!--
+          <a href="#">비밀번호를 잊으셨나요?</a>
+          -->
+          <a href="javascript:fnLORModal('register');">아직 FIA 회원이 아니신가요? <span class="footer-register">회원가입</span></a>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal fade">
+    <div class="modal-dialog modal-register">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">회원가입</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="#" onsubmit="return fnRegister();">
+            <div class="form-group">
+              <i class="fa fa-envelope"></i>
+              <input type="text" class="form-control" placeholder="이메일" required="required" id="email">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-lock"></i>
+              <input type="password" class="form-control" placeholder="패스워드" required="required" id="password1">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-lock"></i>
+              <input type="password" class="form-control" placeholder="패스워드 재입력" required="required" id="password2">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-sort-numeric-asc"></i>
+              <input type="text" class="form-control" placeholder="군번" required="required" id="army_num">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-list-ol"></i>
+              <select class="form-control" aria-placeholder="계급" required="required" id="army_rank">
+                <option></option>
+                <option>이병</option>
+                <option>일병</option>
+                <option>상병</option>
+                <option>병장</option>
+                <option>간부 및 장교</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <i class="fa fa-user"></i>
+              <input type="text" class="form-control" placeholder="이름" required="required" id="name">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-block btn-lg" value="회원가입">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="index.html">FIA!</a></h1> 
+      <!--<a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a id="start" href="#hero">홈</a></li>
+          <li><a href="#listviewLost">찾아주세요!</a></li>
+          <li><a href="#listviewFound">찾아가세요!</a></li>
+          <li><a href="#listviewSuccess">거래완료!</a></li>
+          <li class="drop-down"><a href="">글 작성하기</a>
+            <ul>
+              <li><a href="#writeLost">찾아주세요!</a></li>
+              <li><a href="#writeFound">찾아가세요!</a></li>
+            </ul>
+          </li>
+          <li><a href="#dashboard">소개</a></li>
+          <li><a href="#team">팀</a></li>
+          <!--
+          <li><a href="#contact">Contact</a></li>
+          -->
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <a href="javascript:fnLORModal('hdr');" class="get-started-btn scrollto" id="hdrBtn"></a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Welcome to <span class="project-name">FIA!</span></h1>
+          <h2>군 장병 분실물 상태 공유 플랫폼 · FIA(Find it, Army!)에서 당신의 소중한 물건을 찾아보세요!</h2>
+          <div class="d-flex">
+            <a href="javascript:fnLORModal('stt');" class="btn-get-started scrollto" id="sttBtn"></a>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src="assets/img/logo.jpg" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <!--
+    <section id="featured-services" class="featured-services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="icofont-computer"></i></div>
+              <h4 class="title"><a href=""></a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+      -->
+              <!--
+              <div class="icon"><i class="icofont-image"></i></div>
+              <h4 class="title"><a href=""></a></h4>
+              <p class="description"></p>
+              -->
+              <!--
+              <img src="assets/img/logo.jpg" style="width: 310px;">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="icofont-tasks-alt"></i></div>
+              <h4 class="title"><a href=""></a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>--><!-- End Featured Services Section -->
+
+    <!-- ======= 찾아주세요! 게시판 ======= -->
+    <section id="listviewLost" class="content-section">
+      <div class="container">
+        <div class="section-title">
+            <span>찾아주세요!</span>
+            <h2>찾아주세요!</h2>
+            <p>소중한 물건을 잃어버렸습니다. 습득하신다면 해당 게시물의 댓글 기능을 이용해 찾아주세요!</p>
+        </div>
+        <table id="dataTableLost" class="row-border">
+          <thead>
+              <tr>
+                  <th>습득 시각</th>
+                  <th>제목</th>
+                  <th>물품</th>
+                  <!--
+                  <th>상태</th>
+                  -->
+                  <th>비고</th>
+              </tr>
+          </thead>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======= 찾아주세요! 글 작성하기 ======= -->
+    <section id="writeLost" class="cta">
+      <div class="container">
+
+        <div class="text-center">
+          <h3>찾아주세요!</h3>
+          <p>당신의 소중한 물건을 잃어버리셨습니까? <br>게시판에 물건에 대한 정보를 등록하십시오. 부대원들이 게시글을 확인하여 찾아줄 수 있습니다.</p>
+          <a class="cta-btn" href="/WEB/write.html?writeType=lost">글 작성하기</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= 찾아가세요! 게시판 ======= -->
+    <section id="listviewFound" class="content-section">
+      <div class="container">
+        <div class="section-title">
+          <span>찾아가세요!</span>
+          <h2>찾아가세요!</h2>
+          <p>누군가의 물건을 습득했다면, 애타게 찾고 있을 주인을 위해 게시판에 글을 남겨 주세요!</p>
+        </div>
+        <table id="dataTableFound" class="row-border">
+          <thead>
+              <tr>
+                  <th>습득 시각</th>
+                  <th>제목</th>
+                  <th>물품</th>
+                  <!--
+                  <th>상태</th>
+                  -->
+                  <th>비고</th>
+              </tr>
+          </thead>
+        </table>
+        
+      </div>
+    </section>
+
+    <!-- ======= 찾아가세요! 글 작성하기 ======= -->
+    <section id="writeFound" class="cta">
+      <div class="container">
+
+        <div class="text-center">
+          <h3>찾아가세요!</h3>
+          <p>누군가의 물건을 습득하셨습니까? <br>게시판에 습득한 물건에 대한 정보를 남겨주세요. 애타게 찾고 있을 주인이 글을 확인하고 연락할 수 있습니다.</p>
+          <a class="cta-btn" href="/WEB/write.html?writeType=found">글 작성하기</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= 거래완료! 게시판 ======= -->
+    <section id="listviewSuccess" class="content-section">
+      <div class="container">
+        <div class="section-title">
+          <span>거래완료!</span>
+          <h2>거래완료!</h2>
+          <p>여러분들의 도움을 통해 주인의 품으로 돌아간 물건들의 리스트입니다.</p>
+        </div>
+        <table id="dataTableSuccess" class="row-border">
+          <thead>
+              <tr>
+                  <th>습득 시각</th>
+                  <th>제목</th>
+                  <th>물품</th>
+                  <!--
+                  <th>상태</th>
+                  -->
+                  <th>비고</th>
+              </tr>
+          </thead>
+        </table>
+        
+      </div>
+    </section>
+
+    <!-- ======= 대시보드 ======= -->
+    <section id="dashboard" class="about content-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/logo.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content">
+            <h3>Find It Army!</h3>
+            <ul>
+              <li>군 장병 분실물 상태 공유 플랫폼 · FIA의 효과</li>
+              <li><i class="icofont-check-circled"></i> 소중한 물건을 잃어버리더라도 찾을 확률이 기하급수적으로 상승합니다.</li>
+              <li><i class="icofont-check-circled"></i> 원하는 부대 단위로 설치 & 운영하기에, 구성원들이 접근하기 수월합니다.</li>
+              <li><i class="icofont-check-circled"></i> 부대 단위에서 분실물 센터를 운영할 필요 없이, FIA 설치로 분실물 상태 공유 플랫폼을 구축할 수 있습니다.</li>
+            </ul>
+            <p>
+              생각하여 아예 분실물을 그대로 방치하게 될 수도 있습니다.
+              군 생활에 필수적인 보급품. 또는, 택배를 통해 외부에서 받은 소중한 물건을 분실했을 때 부대에 분실물 보관함이 잘 운영되고 있지 않다면 물건을 다시 찾을 가능성이 낮습니다. <br><br>이를 해결하고자 <b>군 장병 분실물 상태 공유 플랫폼 <span class="content-b">FIA</span></b>가 나왔습니다.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <section class="counts">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">2,483</span>
+            <p>User</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1,463</span>
+            <p>Post</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">980</span>
+            <p>Processing Completed</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">483</span>
+            <p>In Progress</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Team</span>
+          <h2>Team</h2>
+          <p>군 장병 분실물 상태 공유 플랫폼 · FIA(Find it, Army!)를 만들어 나가는 팀입니다.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="assets/img/team/user.png" alt="">
+              <h4>Jewoong Moon</h4>
+              <span>팀장 · 백엔드 개발</span>
+              <p>Team leader and back-end development role.</p>
+              <div class="social">
+                <a><i class="icofont-twitter"></i></a>
+                <a><i class="icofont-facebook"></i></a>
+                <a><i class="icofont-instagram"></i></a>
+                <a><i class="icofont-linkedin"></i></a>
+                <a><i class="icofont-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="assets/img/team/user.png" alt="">
+              <h4>Woosung Jo</h4>
+              <span>프론트엔드 개발</span>
+              <p>front-end development role.</p>
+              <div class="social">
+                <a><i class="icofont-twitter"></i></a>
+                <a><i class="icofont-facebook"></i></a>
+                <a><i class="icofont-instagram"></i></a>
+                <a><i class="icofont-linkedin"></i></a>
+                <a><i class="icofont-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="assets/img/team/plus.png" alt="">
+              <h4>공석</h4>
+              <span>공석</span>
+              <p>당신도 FIA에서 함께 할 수 있습니다.</p>
+              <div class="social">
+                <!--
+                <a href=""><i class="icofont-twitter"></i></a>
+                <a href=""><i class="icofont-facebook"></i></a>
+                <a href=""><i class="icofont-instagram"></i></a>
+                <a href=""><i class="icofont-linkedin"></i></a>
+                -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <!--
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>Contact</h2>
+          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    -->
+    <!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>FIA!</h3>
+            <p>군 장병 분실물 상태 공유 플랫폼 · FIA(Find it, Army!)에서 당신의 소중한 물건을 찾아보세요!</p>
+          </div>
+        </div>
+
+        <!--
+        <div class="row footer-newsletter justify-content-center">
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+        -->
+
+        <div class="social-links">
+          <a class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>FIA</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      <!--  
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      -->
+
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/datatables/datatables.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/eq.js"></script>
+  <script src="assets/js/listview.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
