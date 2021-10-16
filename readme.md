@@ -15,7 +15,14 @@
 
 
 ## 기능 설명
- - 설명 기입
+ - 홈페이지 메인
+ - 로그인/로그아웃
+ - 게시판 종류
+  - 찾아주세요 게시판(분실 신고)
+  - 찾아가세요 게시판(습득 신고)
+  - 거래완료 게시판(거래 완료 로그 확인 게시판)
+ - 게시글 작성 방법 
+
 
 ## 기대 효과
  -  수량이 제한되어 있는 보급품 혹은 소중한 개인 물품들을 군 생활이 끝날 때까지 잃어버리지 않고 잘 사용할 수 있을 것입니다.
@@ -37,20 +44,15 @@
  -  Jquery 3.5.1
  -  Datatables
 
-## 설치 안내 (Installation Process)
-(수정 예정)
-```bash
-$ git clone git주소
-$ yarn or npm install
-$ yarn start or npm run start
-```
 
 ## 프로젝트 사용법 (Getting Started)
 **마크다운 문법을 이용하여 자유롭게 기재**
-(추가예정)
+- [서비스 링크 바로가기(링크 추가하기)]()
+  - OSAM 측에서 제공하는 VM 특성상 서비스 이용시간이 아래와 같이 제한됩니다.
+    - 평일 : 17시~23시, 주말 및 공휴일 : 09시~23시
 
-- [Swagger]
-- [Redoc]
+- [Swagger](https://moonjewoong.pythonanywhere.com/swagger/)
+- [Redoc](https://moonjewoong.pythonanywhere.com/redoc/)
 - [Backend 개발자가 직접 작성한 API 사용 문서](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/Project_FIA%20Backend%20API%20%EC%82%AC%EC%9A%A9%20%EB%AC%B8%EC%84%9C(%EC%B5%9C%EC%A2%85).pdf)
 
 

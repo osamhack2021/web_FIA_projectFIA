@@ -27,7 +27,7 @@ schema_view = get_schema_view(
         description="국군장병들의 분실물 상태 공유 플랫폼 Projct_FIA의 Backend Server API 문서입니다.",
         terms_of_service="https://www.google.com/policies/terms/", 
         contact=openapi.Contact(email="munjin0201@naver.com"), 
-        license=openapi.License(name="License는 추후 추가될 예정입니다."), 
+        license=openapi.License(name="BSD 3-Clause License"), 
     ), 
     public=True, 
     permission_classes=(permissions.AllowAny,), 
