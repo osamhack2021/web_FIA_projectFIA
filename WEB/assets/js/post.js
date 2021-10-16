@@ -35,6 +35,10 @@ $(document).ready(function() {
 });
 
 function fnSetPostInfo(data) {
+    if (! (data.data.post_status === 'completed')) {
+        fnGetUserInfo(data.data.user);
+    } 
+
     document.getElementById('title').value = data.data.title;
     document.getElementById('userID').value = `${data.data.username} ( ${data.data.user} )`;
     document.getElementById('tag').value = getTagOrName(data.data.tag, true);
@@ -48,6 +52,29 @@ function fnSetPostInfo(data) {
     }
 }
 
+function fnGetUserInfo(userEmail) {
+    $.ajax({
+        url: `https://moonjewoong.pythonanywhere.com/accounts/user/`, 
+        dataType: "json", 
+        type: "GET", 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
+        },
+        success: function(data) { 
+            if (data.email === userEmail) {
+                document.getElementById('pro').style.display = "block";
+            }
+        }, 
+        error: function(request, status, error) {
+            // console.log(request);
+            // console.log(status);
+            // console.log(error);
+
+            alert('데이터 로딩에 실패했습니다. 잠시 후 시도해주세요.');
+            location.href = 'index.html';
+        }
+    });
+}
 
 function fnAddComment(userInfo, dateTime, content) {
 
@@ -100,13 +127,42 @@ function fnAddCommentCheck() {
             fnAddComment(`${data.username} ( ${data.user} )`, getDateTimePostFormat(data.created_at), data.body);
         }, 
         error: function(request, status, error) {
-            console.log(request);
-            console.log(status);
-            console.log(error);
+            // console.log(request);
+            // console.log(status);
+            // console.log(error);
 
             alert('댓글 추가를 실패했습니다. 잠시 후 시도해주세요.');
         }
     });
 
     
+}
+
+function fnPostSuccess() {
+    $.ajax({
+        url: `https://moonjewoong.pythonanywhere.com/board/${postNo}/`, 
+        dataType: "json", 
+        type: "PUT", 
+        data: {
+            title : document.getElementById('title').value, 
+            body : document.getElementById('details').value, 
+            tag : getTagOrName(document.getElementById('tag').value, false), 
+            place : document.getElementById('place').value, 
+            board_type : (document.getElementById('writeType').value === "찾아가세요!" ? "pick_up" : "request"), 
+            post_status : "completed"
+        }, 
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization",`Bearer ${sessionStorage.getItem('userToken')}`);
+        },
+        success: function(data) { 
+            location.reload();
+        }, 
+        error: function(request, status, error) {
+            // console.log(request);
+            // console.log(status);
+            // console.log(error);
+
+            alert('처리 완료를 실패했습니다. 잠시 후 시도해주세요.');
+        }
+    });
 }

@@ -27,8 +27,8 @@ const LANGUAGE_OPTION = {
  * listview.html
  */
 $(document).ready(function () {
-    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=pick_up", "dataTableLost");
-    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=request", "dataTableFound");
+    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=pick_up&post_status=ongoing", "dataTableLost");
+    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=request&post_status=ongoing", "dataTableFound");
     fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?post_status=completed", "dataTableSuccess");
 });
 
@@ -63,8 +63,8 @@ function fnGetListViewData(url, tableName) {
  */
 function initDataTable(data, tableName) {
 
-    console.log(data );
-    console.log(tableName);
+    // console.log(data);
+    // console.log(tableName);
 
     var table = $(`#${tableName}`).DataTable({
         data: data,  
