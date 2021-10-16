@@ -27,25 +27,47 @@ const LANGUAGE_OPTION = {
  * listview.html
  */
 $(document).ready(function () {
-    initDataTableLost();
-    initDataTableFound();
-    initDataTableSuccess();
+    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=pick_up", "dataTableLost");
+    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?board_type=request", "dataTableFound");
+    fnGetListViewData("https://moonjewoong.pythonanywhere.com/board/?post_status=completed", "dataTableSuccess");
 });
+
+function fnGetListViewData(url, tableName) {
+    var data = new Array();
+
+    $.ajax({
+        url: url, 
+        dataType: "json", 
+        type: "GET", 
+        success: function(ret) { 
+            
+            for (const key in ret.data) {
+                let tmp = new Array();
+                tmp.push(getDateTimePostFormat(ret.data[key].created_at));
+                tmp.push(ret.data[key].title);
+                tmp.push(getTagOrName(ret.data[key].tag, true));
+                tmp.push(ret.data[key].id);
+                data.push(tmp);
+            }
+
+            initDataTable(data, tableName);
+        }, 
+        error: function(request, status, error) {
+            alert('데이터 로딩에 실패했습니다.');
+        }
+    });
+}
 
 /**
  * 찾아주세요! 게시판 init
  */
-function initDataTableLost() {
-    var table = $('#dataTableLost').DataTable({
-        "ajax" : {
-            url : '/WEB/assets/test-data.json', 
-            // url : 'https://osamhack2021-web-cloud-fia-projectfia-69vqjw6x5fxvv4-8000.githubpreview.dev/WEB/assets/test-data.json', 
-            // ajax web url test
-            type : 'GET', 
-            error : function(xhr, status, error) {
-                // console.log(xhr);
-            }
-        }, 
+function initDataTable(data, tableName) {
+
+    console.log(data );
+    console.log(tableName);
+
+    var table = $(`#${tableName}`).DataTable({
+        data: data,  
         "order" : [[0, 'asc']], 
         "language" : LANGUAGE_OPTION, 
         "columnDefs": [{
@@ -61,7 +83,9 @@ function initDataTableLost() {
             targets : 2, 
             className : 'dt-center', 
             orderable : false
-        }, {
+        }, 
+        
+        /*{
             targets : 3, 
             className : 'dt-center', 
             orderable : true, 
@@ -78,7 +102,9 @@ function initDataTableLost() {
                     return data;
                 }
             }
-        }, {
+        }, 
+        */
+        {
             targets: -1,
             className : 'dt-center', 
             orderable : false, 
@@ -109,170 +135,9 @@ function initDataTableLost() {
         
     });
 
-    $('#dataTableLost tbody').on('click', 'button', function () {
+    $(`#${tableName} tbody`).on('click', 'button', function () {
         var data = table.row( $(this).parents('tr')).data();
-        window.open(`post.html?postNo=${data[4]}`);
-    });
-}
-
-/**
- * 찾아가세요! 게시판 init
- */
-function initDataTableFound() {
-    var table = $('#dataTableFound').DataTable({
-        "ajax" : {
-            url : '/WEB/assets/test-data.json', 
-            type : 'GET', 
-            error : function(xhr, status, error) {
-                // console.log(xhr);
-            }
-        }, 
-        "order" : [[0, 'asc']], 
-        "language" : LANGUAGE_OPTION, 
-        "columnDefs": [{
-            targets : 0, 
-            className : 'dt-center', 
-            orderable : true
-        }, {
-            targets : 1, 
-            className : 'dt-left', 
-            className : 'dt-head-center', 
-            orderable : false
-        }, {
-            targets : 2, 
-            className : 'dt-center', 
-            orderable : false
-        }, {
-            targets : 3, 
-            className : 'dt-center', 
-            orderable : true, 
-            render : function(data, type) {
-                if (type == 'display') {
-                    if (data == '1') {
-                        return "처리완료 <i style='color: #14c871;' class='fa fa-3 fa-check-circle datatable-paid-1'></i>";
-                    } else if (data == '2') {
-                        return "처리중 <i style='color: #00a3d2;' class='fa fa-3 fa-exclamation-circle datatable-paid-0'></i>";
-                    } else if (data == '3') {
-                        // return "<i class='fa fa-3 fa-exclamation-circle datatable-paid-0'></i>";
-                    }
-                } else {
-                    return data;
-                }
-            }
-        }, {
-            targets: -1,
-            className : 'dt-center', 
-            orderable : false, 
-            data: null,
-            defaultContent: "<button style='border-radius: 4px; background: #fff; color: #5f687b; border: 1px solid #cdd1d9; font-size: 14px; padding: 8px 20px;'>자세히 보기</button>"
-        }],
-        
-        initComplete: function () {
-            this.api().column().eq(0).each( function () {
-                var column = this.column(2);
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            });
-        }
-        
-    });
-
-    $('#dataTableFound tbody').on('click', 'button', function () {
-        var data = table.row( $(this).parents('tr')).data();
-        window.open(`post.html?postNo=${data[4]}`);
-    });
-}
-
-/**
- * 거래완료! 게시판 init
- */
- function initDataTableSuccess() {
-    var table = $('#dataTableSuccess').DataTable({
-        "ajax" : {
-            url : '/WEB/assets/test-data.json', 
-            type : 'GET', 
-            error : function(xhr, status, error) {
-                // console.log(xhr);
-            }
-        }, 
-        "order" : [[0, 'asc']], 
-        "language" : LANGUAGE_OPTION, 
-        "columnDefs": [{
-            targets : 0, 
-            className : 'dt-center', 
-            orderable : true
-        }, {
-            targets : 1, 
-            className : 'dt-left', 
-            className : 'dt-head-center', 
-            orderable : false
-        }, {
-            targets : 2, 
-            className : 'dt-center', 
-            orderable : false
-        }, {
-            targets : 3, 
-            className : 'dt-center', 
-            orderable : true, 
-            render : function(data, type) {
-                if (type == 'display') {
-                    if (data == '1') {
-                        return "처리완료 <i style='color: #14c871;' class='fa fa-3 fa-check-circle datatable-paid-1'></i>";
-                    } else if (data == '2') {
-                        return "처리중 <i style='color: #00a3d2;' class='fa fa-3 fa-exclamation-circle datatable-paid-0'></i>";
-                    } else if (data == '3') {
-                        // return "<i class='fa fa-3 fa-exclamation-circle datatable-paid-0'></i>";
-                    }
-                } else {
-                    return data;
-                }
-            }
-        }, {
-            targets: -1,
-            className : 'dt-center', 
-            orderable : false, 
-            data: null,
-            defaultContent: "<button style='border-radius: 4px; background: #fff; color: #5f687b; border: 1px solid #cdd1d9; font-size: 14px; padding: 8px 20px;'>자세히 보기</button>"
-        }],
-        
-        initComplete: function () {
-            this.api().column().eq(0).each( function () {
-                var column = this.column(2);
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            });
-        }
-        
-    });
-
-    $('#dataTableFound tbody').on('click', 'button', function () {
-        var data = table.row( $(this).parents('tr')).data();
-        window.open(`post.html?postNo=${data[4]}`);
+        console.log(data[3]);
+        window.open(`post.html?postNo=${data[3]}`);
     });
 }
