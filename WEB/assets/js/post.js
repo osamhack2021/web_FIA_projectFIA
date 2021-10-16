@@ -109,6 +109,11 @@ function fnAddComment(userInfo, dateTime, content) {
 }
 
 function fnAddCommentCheck() {
+    if (document.getElementById('add').value.length <= 0) {
+        alert('댓글을 작성해주시기 바랍니다.');
+        return;
+    } 
+
     $.ajax({
         url: "https://moonjewoong.pythonanywhere.com/board/comment/", 
         // url: "/WEB/assets/test-data-post.json", 
