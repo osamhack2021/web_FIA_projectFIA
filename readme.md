@@ -18,38 +18,46 @@
  - 홈페이지 메인
  - 로그인/로그아웃
  - 게시판 종류
-  - 찾아주세요 게시판(분실 신고)
-  - 찾아가세요 게시판(습득 신고)
-  - 거래완료 게시판(거래 완료 로그 확인 게시판)
- - 게시글 작성 방법 
+   - 찾아주세요 게시판(분실 신고)
+   - 찾아가세요 게시판(습득 신고)
+   - 거래완료 게시판(거래 완료 로그 확인 게시판)
+ - 게시판 이용 방법
+   - 게시글 작성 방법
+   - 댓글 작성 방법
+   - 게시글 검색 방법
 
 
 ## 기대 효과
  -  수량이 제한되어 있는 보급품 혹은 소중한 개인 물품들을 군 생활이 끝날 때까지 잃어버리지 않고 잘 사용할 수 있을 것입니다.
- -  부대 단위에서 따로 실제 분실물 센터를 운영할 필요 없이 FIA 하나만 설치하여 곧바로 분실물 상태를 공유할 수 있는 플랫폼을 간편하게 도입할 수 있습니다.
- -  원하는 부대 단위로 직접 설치하여 운영할 수 있기 때문에 부대 구성원들이 접근하기가 훨씬 더 용이할 것입니다.
- -  물건을 잃어버린 장병들이 분실물을 찾게 될 확률이 기하급수적으로 높아질 수 있을 것이라 전망합니다.
+ -  부대 단위에서 따로 실제 분실물 센터를 운영할 필요 없이 FIA 하나만 도입하여 곧바로 분실물 상태를 공유할 수 있는 플랫폼을 간편하게 도입할 수 있습니다.
+ -  PC 웹 환경 혹은 모바일 환경 모두 쉽게 접근할 수 있기 때문에 부대 구성원들이 이용하기가 훨씬 더 용이할 것입니다.
+ -  물건을 잃어버린 장병들이 분실물을 찾게 될 확률이 기하급수적으로 높아질 수 있을것이라 전망합니다.
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * Chrome 브라우저 사용 권장
 
 ## 기술 스택 (Technique Used) 
 ### Server(back-end)
- - Python django
- - Python django rest framework
- - Swagger & Redoc
+ - Python Django 3.2.7
+ - Python django rest framework 3.12.4
+ - Swagger & Redoc (drf-yasg) 1.20.0
  
 ### Front-end
- -  Bootstrap 4
- -  Jquery 3.5.1
- -  Datatables
+- Bootstrap 4
+- JQuery 3.5.1 
+- DataTables 1.11.2 
+- DatePicker 1.9.0 
+- TimePicki 2.0 
+
+
 
 
 ## 프로젝트 사용법 (Getting Started)
 **마크다운 문법을 이용하여 자유롭게 기재**
-- [서비스 링크 바로가기(링크 추가하기)]()
+- [서비스 링크 바로가기](http://20.196.203.235)
   - OSAM 측에서 제공하는 VM 특성상 서비스 이용시간이 아래와 같이 제한됩니다.
-    - 평일 : 17시~23시, 주말 및 공휴일 : 09시~23시
+    - 평일 : 17시~23시
+    - 주말 및 공휴일 : 09시~23시
 
 - [Swagger](https://moonjewoong.pythonanywhere.com/swagger/)
 - [Redoc](https://moonjewoong.pythonanywhere.com/redoc/)
@@ -60,6 +68,10 @@
  ## 회의록 및 개발일지
   * [회의록](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/%ED%9A%8C%EC%9D%98%EB%A1%9D.md)
  
+ ## 추후 개발사항
+ - 프론트 단에서 게시글 수정 기능 추가하기
+ - 사용자 요구에 맞춘 태그 세분화
+ - 회원관리 기능 추가(비밀번호 변경기능 등...)
 
 ## 팀 정보 (Team Information)
 - Moon Je Woong (munjin0201@naver.com), Github Id: MoonJeWoong
