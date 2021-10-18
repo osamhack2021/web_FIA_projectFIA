@@ -155,7 +155,7 @@
 
   - 모바일 게시판 이용
 
-<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B2%8C%EC%8B%9C%ED%8C%90.jpg" width="260" height="600"/><img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B2%8C%EC%8B%9C%EA%B8%80.jpg" width="260" height="600"/><img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%8C%93%EA%B8%80.jpg" width="260" height="600"/>
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B2%8C%EC%8B%9C%ED%8C%90.jpg" width="270" height="600"/><img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B2%8C%EC%8B%9C%EA%B8%80.jpg" width="270" height="600"/><img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%8C%93%EA%B8%80.jpg" width="270" height="600"/>
 
 
 
