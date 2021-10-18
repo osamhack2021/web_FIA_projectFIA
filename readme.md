@@ -55,6 +55,8 @@
 
 <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%B0%BE%EC%95%84%EC%A3%BC%EC%84%B8%EC%9A%94!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>  
 
+<br/>
+<br/>
 
    - ### 찾아가세요 게시판(습득 신고)
      - 찾아가세요 게시판은 분실물을 습득한 서비스 이용자가 습득신고를 할 수 있는 게시판입니다.
