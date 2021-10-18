@@ -16,8 +16,14 @@
 
 ## 기능 설명(이미지 추가 예정)
  - 홈페이지 메인
+    - 아래쪽의 서비스 링크로 접속하시면 가장 처음 볼 수 있는 페이지입니다. 우측 상단의 메뉴를 클락하거나 스크롤로 페이지를 이동하실 수 있습니다.
  <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.JPG"  width="900" height="500"/>
- - 로그인/로그아웃
+
+ - 로그인/로그아웃/ 회원가입
+
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B8.JPG"/>
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.JPG"/>
+
  - 게시판 종류
    - 찾아주세요 게시판(분실 신고)
    - 찾아가세요 게시판(습득 신고)
