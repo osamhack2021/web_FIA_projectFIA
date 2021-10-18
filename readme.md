@@ -176,7 +176,7 @@
 
  
  ## 회의록 및 개발일지
-  * [회의록](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/%ED%9A%8C%EC%9D%98%EB%A1%9D.md)
+  * [회의록 및 개발일지 링크](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/master/%ED%9A%8C%EC%9D%98%EB%A1%9D.md)
  
  ## 추후 개발사항
  - 프론트 단에서 게시글 수정 기능 추가하기
