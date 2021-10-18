@@ -47,10 +47,20 @@
      - 분실물의 거래 로그를 남겨서 부당한 분실물 거래가 있지는 않았는지, 분실물이 올바른 주인을 찾아간 것인지를 확인해 볼 수 있습니다.
 
     <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B1%B0%EB%9E%98%EC%99%84%EB%A3%8C!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>
-    
+
 
  - 게시판 이용 방법
    - 게시글 작성 방법
+     - 게시글은 각 게시판 하단의 글 작성하기 버튼을 클릭하여 진행하실 수 있습니다. 해당 기능은 로그인이 된 유저들만 진행 가능합니다.
+     - 아래 이미지와 같이 분실물이 발생한 장소, 시간, 경위등을 기입할 수 있으며 분실물의 태그를 달 수 있어 접근하는 사용자로 하여금 보다 쉽게 게시글을 찾을 수 있도록 도와줍니다.
+
+   <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9E%91%EC%84%B1.JPG"/>
+
+     - 게시글을 작성 완료한 이미지입니다. 해당 게시판에 잘 게시되었음을 확인할 수 있습니다.
+
+      <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B2%8C%EC%8B%9C%EA%B8%80%EC%9E%91%EC%84%B1%EC%99%84%EB%A3%8C.JPG"/>
+
+
    - 댓글 작성 방법
    - 게시글 검색 방법
 
