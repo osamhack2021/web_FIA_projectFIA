@@ -137,6 +137,16 @@
 <br/>
 
 
+- ## 모바일 환경
+  - 메인화면
+<br/>
+<br/>
+
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%A9%94%EC%9D%B8.jpg"/>
+
+  - 
+
+
 ## 기대 효과
  -  수량이 제한되어 있는 보급품 혹은 소중한 개인 물품들을 군 생활이 끝날 때까지 잃어버리지 않고 잘 사용할 수 있을 것입니다.
  -  부대 단위에서 따로 실제 분실물 센터를 운영할 필요 없이 FIA 하나만 도입하여 곧바로 분실물 상태를 공유할 수 있는 플랫폼을 간편하게 도입할 수 있습니다.
