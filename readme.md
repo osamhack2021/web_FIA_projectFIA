@@ -14,11 +14,13 @@
 - 이러한 문제점들을 해결하고자 고안해낸 프로젝트가 바로 군 장병 분실물 상태 공유 플랫폼 FIA입니다.
 
 
+
 ## 기능 설명(이미지 추가 예정)
  - 홈페이지 메인
     - 아래쪽의 서비스 링크로 접속하시면 가장 처음 볼 수 있는 페이지입니다. 
     - 우측 상단의 메뉴를 클락하거나 스크롤로 페이지를 이동하실 수 있습니다.  
  <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.JPG"  width="900" height="500"/>  
+
 
 
  - 로그인/로그아웃/ 회원가입
@@ -28,7 +30,11 @@
 <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B8.JPG"/> <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.JPG"/>  
 
 
+
+
  - 게시판 종류
+
+
    - 찾아주세요 게시판(분실 신고)
      - 찾아주세요 게시판은 서비스 이용자가 분실물이 생겼을 때 이를 신고할 수 있는 게시판입니다.
      - 분실물을 습득한 서비스 이용자는 이 게시판을 이용하여 주인을 손쉽게 찾아줄 수 있습니다.  
@@ -40,7 +46,10 @@
      - 찾아가세요 게시판은 분실물을 습득한 서비스 이용자가 습득신고를 할 수 있는 게시판입니다.
      - 분실물이 생긴 서비스 이용자는 이 게시판을 이용하여 자신의 분실물을 습득한 사람이 있는지 확인할 수 있습니다.  
 
+
     <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%B0%BE%EC%95%84%EA%B0%80%EC%84%B8%EC%9A%94!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>  
+
+
 
    - 거래완료 게시판(거래 완료 로그 확인 게시판)
      - 거래완료 게시판은 분실, 습득 신고 게시판에 업로드된 게시글 중 분실물이 주인을 찾았거나 상황이 종료되어 분실물 거래가 완료된 게시글들을 로그처럼 모아볼 수 있는 게시판입니다.
