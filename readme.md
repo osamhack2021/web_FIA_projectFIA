@@ -16,7 +16,7 @@
 
 ## 기능 설명(이미지 추가 예정)
  - 홈페이지 메인
- 
+ <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.JPG"  width="900" height="500"/>
  - 로그인/로그아웃
  - 게시판 종류
    - 찾아주세요 게시판(분실 신고)
