@@ -24,6 +24,7 @@
  - 로그인/로그아웃/ 회원가입
     - 우측 상단의 로그인 버튼을 클릭하시면 죄측 사진처럼 로그인을 하실 수 있는 팝업창을 보실 수 있습니다.
     - FIA 서비스의 회원이 아니시라면 하단의 회원가입 버튼을 클릭하여 회원가입 페이지에서 회원가입을 진행하실 수 있습니다.
+    
 <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B8.JPG"/> <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.JPG"/>
 
  - 게시판 종류
