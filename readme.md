@@ -142,7 +142,7 @@
 <br/>
 <br/>
 
-<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%A9%94%EC%9D%B8.jpg"/>
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%A9%94%EC%9D%B8.jpg width="200" height="500"/>
 
   - 
 
