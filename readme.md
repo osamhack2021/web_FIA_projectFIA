@@ -97,7 +97,7 @@
 <br/>
 <br/>
 
-게시글을 작성 완료한 이미지입니다. 해당 게시판에 잘 게시되었음을 확인할 수 있습니다.
+  - - 게시글을 작성 완료한 이미지입니다. 해당 게시판에 잘 게시되었음을 확인할 수 있습니다.
 
 
 <br/>
@@ -109,6 +109,19 @@
 <br/>
 
    - 댓글 작성 방법
+     - 게시글 자세히 보기 버튼을 클릭하면 해당 게시글의 세부 기재사항과 댓글을 확인하고 작성하실 수 있습니다.
+
+
+<br/>
+<br/>
+
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%8C%93%EA%B8%80%EC%9E%91%EC%84%B1.JPG"/>
+
+<br/>
+<br/>
+
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%8C%93%EA%B8%80%EC%9E%91%EC%84%B1%EC%99%84%EB%A3%8C.JPG"/>
+
    - 게시글 검색 방법
 
 
