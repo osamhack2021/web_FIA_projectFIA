@@ -24,21 +24,30 @@
  - 로그인/로그아웃/ 회원가입
     - 우측 상단의 로그인 버튼을 클릭하시면 죄측 사진처럼 로그인을 하실 수 있는 팝업창을 보실 수 있습니다.
     - FIA 서비스의 회원이 아니시라면 하단의 회원가입 버튼을 클릭하여 회원가입 페이지에서 회원가입을 진행하실 수 있습니다.
-    
+
 <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B8.JPG"/> <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.JPG"/>
+
 
  - 게시판 종류
    - 찾아주세요 게시판(분실 신고)
+     - 찾아주세요 게시판은 서비스 이용자가 분실물이 생겼을 때 이를 신고할 수 있는 게시판입니다.
+     - 분실물을 습득한 서비스 이용자는 이 게시판을 이용하여 주인을 손쉽게 찾아줄 수 있습니다.
 
     <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%B0%BE%EC%95%84%EC%A3%BC%EC%84%B8%EC%9A%94!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>
 
+
    - 찾아가세요 게시판(습득 신고)
+     - 찾아가세요 게시판은 분실물을 습득한 서비스 이용자가 습득신고를 할 수 있는 게시판입니다.
+     - 분실물이 생긴 서비스 이용자는 이 게시판을 이용하여 자신의 분실물을 습득한 사람이 있는지 확인할 수 있습니다.
 
     <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%B0%BE%EC%95%84%EA%B0%80%EC%84%B8%EC%9A%94!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>
 
    - 거래완료 게시판(거래 완료 로그 확인 게시판)
+     - 거래완료 게시판은 분실, 습득 신고 게시판에 업로드된 게시글 중 분실물이 주인을 찾았거나 상황이 종료되어 분실물 거래가 완료된 게시글들을 로그처럼 모아볼 수 있는 게시판입니다.
+     - 분실물의 거래 로그를 남겨서 부당한 분실물 거래가 있지는 않았는지, 분실물이 올바른 주인을 찾아간 것인지를 확인해 볼 수 있습니다.
 
     <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B1%B0%EB%9E%98%EC%99%84%EB%A3%8C!(%EA%B2%8C%EC%8B%9C%ED%8C%90).JPG"/>
+    
 
  - 게시판 이용 방법
    - 게시글 작성 방법
