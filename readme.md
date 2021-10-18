@@ -122,7 +122,19 @@
 
 <img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%8C%93%EA%B8%80%EC%9E%91%EC%84%B1%EC%99%84%EB%A3%8C.JPG"/>
 
+<br/>
+<br/>
+
+
    - 게시글 검색 방법
+     - 서비스 이용자는 찾길 원하는 키워드를 검색 엔진에 기입하여 원하는 게시글에 쉽게 접근하실 수 있습니다.
+<br/>
+<br/>
+
+<img src="https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/images/PC%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B2%80%EC%83%89.JPG"/>
+
+<br/>
+<br/>
 
 
 ## 기대 효과
