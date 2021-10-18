@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/workspaces/web_cloud_FIA_projectFIA/.venv"
+set -gx VIRTUAL_ENV "/workspaces/web_FIA_projectFIA/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
