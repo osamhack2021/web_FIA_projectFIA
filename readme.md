@@ -212,5 +212,5 @@
 
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
- * [BSD](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/backend/LICENSE)
- * [Apache2.0](https://github.com/osamhack2021/web_cloud_FIA_projectFIA/blob/backend/LICENSE)
+ * [BSD](https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/LICENSE)
+ * [Apache2.0](https://github.com/osamhack2021/web_FIA_projectFIA/blob/master/LICENSE)
